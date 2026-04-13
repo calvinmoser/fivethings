@@ -1,7 +1,7 @@
 Activity Name,S1 Item1,S1 Item2,S2 Item1,S2 Item2
 Baking a Cake,Flour,Sawdust,Oven,Refrigerator
 Brushing Teeth,Toothbrush,Paintbrush,Toothpaste,Sunscreen
-Washing Dishes,Sponge,Pillow,Dish Soap [liq],Motor Oil [liq]
+Washing Dishes,Sponge,Pillow,Dish Soap,Motor Oil
 Riding a Bike,Bicycle,Wheelbarrow,Helmet,Colander
 Playing Tennis,Tennis Racket,Frying Pan,Tennis Ball,Orange
 Raking Leaves,Rake,Pitchfork,Leaf Pile,Pile of Books
@@ -9,12 +9,12 @@ Reading a Book,Book,Brick,Bookmark,Butter Knife
 Tying Shoes,Shoelace,Ribbon,Sneaker,Loaf of Bread
 Throwing a Frisbee,Frisbee,Hubcap,Grass,Carpet
 Knocking on a Door,Door,Refrigerator Door,Fist,Spatula
-Pouring Juice,Juice Carton,Gasoline Can,Glass [liq],Fishbowl [liq]
-Watering Plants,Watering Can,Teapot,Water [liq],Lemonade [liq]
+Pouring Juice,Juice Carton,Gasoline Can,Glass,Fishbowl
+Watering Plants,Watering Can,Teapot,Water,Lemonade
 Ironing a Shirt,Iron,Brick,Shirt,Tortilla
 Mopping the Floor,Mop,Hockey Stick,Bucket,Bathtub
-Blowing a Candle,Candle,Crayon,Breath [gas],Steam [gas]
-Eating Soup,Soup Spoon,Ladle,Soup [liq],Maple Syrup [liq]
+Blowing a Candle,Candle,Crayon,Breath,Steam
+Eating Soup,Soup Spoon,Ladle,Soup,Maple Syrup
 Folding Laundry,Shirt,Newspaper,Dryer Sheet,Sticky Note
 Pushing a Stroller,Stroller,Shopping Cart,Baby,Bowling Ball
 Sweeping the Floor,Broom,Twig,Dustpan,Hubcap
@@ -22,15 +22,15 @@ Catching a Baseball,Baseball Glove,Catcher's Mask,Baseball,Grapefruit
 Hammering a Nail,Hammer,Wrench,Nail,Toothpick
 Climbing a Ladder,Ladder,Bookshelf,Rung,Shelf
 Chopping Vegetables,Knife,Ruler,Carrot,Marker
-Drinking Water,Water Bottle,Thermos,Water [liq],Pickle Juice [liq]
+Drinking Water,Water Bottle,Thermos,Water,Pickle Juice
 Shoveling Snow,Snow Shovel,Garden Shovel,Snow,Flour
 Jumping Rope,Jump Rope,Garden Hose,Handle,Banana
-Painting a Fence,Paintbrush,Toothbrush,Paint [liq],Ketchup [liq]
+Painting a Fence,Paintbrush,Toothbrush,Paint,Ketchup
 Opening an Umbrella,Umbrella,Parasol,Handle,Rolling Pin
 Zipping a Jacket,Jacket,Sleeping Bag,Zipper,Cheese Grater
 Stirring Coffee,Coffee Mug,Flower Pot,Spoon,Pen
 Filing Nails,Nail File,Cheese Grater,Fingernail,Twig
-Blowing Up a Balloon,Balloon,Rubber Glove,Air [gas],Helium [gas]
+Blowing Up a Balloon,Balloon,Rubber Glove,Air,Helium
 Typing on a Keyboard,Keyboard,Piano Keys,Finger,Carrot
 Picking Apples,Apple,Tennis Ball,Tree Branch,Umbrella Handle
 Setting the Table,Plate,Frisbee,Fork,Comb
@@ -43,66 +43,66 @@ Changing a Lightbulb,Lightbulb,Christmas Ornament,Lamp Socket,Tin Can
 Wrapping a Present,Gift Box,Shoebox,Wrapping Paper,Aluminum Foil
 Putting on a Seatbelt,Seatbelt,Measuring Tape,Buckle,Clothespin
 Polishing Shoes,Shoe Polish,Axle Grease,Cloth,Coffee Filter
-Blowing a Bubble,Bubble Wand,Straw,Bubble Solution [liq],Dish Soap [liq]
+Blowing a Bubble,Bubble Wand,Straw,Bubble Solution,Dish Soap
 Carving Pumpkins,Pumpkin,Watermelon,Carving Knife,Letter Opener
 Feeding a Dog,Dog Bowl,Mixing Bowl,Dog Food,Gravel
 Playing Catch,Baseball,Tangerine,Throwing Arm,Baguette
-Boiling Water,Pot,Bucket,Water [liq],Chicken Broth [liq]
+Boiling Water,Pot,Bucket,Water,Chicken Broth
 Peeling a Banana,Banana,Zucchini,Peel,Latex Glove
 Spreading Butter,Butter Knife,Popsicle Stick,Butter,Peanut Butter
 Eating an Ice Cream Cone,Ice Cream Cone,Waffle Cone,Ice Cream,Mashed Potatoes
 Slicing Bread,Bread Knife,Hacksaw,Loaf of Bread,Pool Noodle
-Cracking an Egg,Egg,Golf Ball,Egg White [liq],Glue [liq]
+Cracking an Egg,Egg,Golf Ball,Egg White,Glue
 Pouring Cereal,Cereal Box,Gravel Bag,Cereal,Pebbles
 Threading a Needle,Needle,Toothpick,Thread,Fishing Line
 Buttoning a Shirt,Button,Coin,Shirt,Napkin
-Popping Popcorn,Popcorn Kernel,Pea,Steam [gas],Vapor [gas]
+Popping Popcorn,Popcorn Kernel,Pea,Steam,Vapor
 Swinging a Golf Club,Golf Club,Broomstick,Golf Ball,Mandarin Orange
 Folding a Paper Airplane,Paper,Aluminum Foil,Fold,Crease
 Sharpening a Pencil,Pencil,Candle,Pencil Sharpener,Cheese Grater
-Mixing Paint,Paint Brush,Chopstick,Paint [liq],Tempera [liq]
+Mixing Paint,Paint Brush,Chopstick,Paint,Tempera
 Kneading Dough,Dough,Play-Doh,Knuckle,Rolling Pin
 Ringing a Doorbell,Doorbell,Button,Finger,Eraser
 Catching Fireflies,Jar,Tupperware,Lid,Frisbee
 Turning a Page,Book Page,Index Card,Thumb,Spatula
 Dunking a Basketball,Basketball,Volleyball,Hoop,Hula Hoop
-Carrying Groceries,Grocery Bag,Tote Bag,Milk Jug [liq],Jug of Cider [liq]
+Carrying Groceries,Grocery Bag,Tote Bag,Milk Jug,Jug of Cider
 Flipping a Pancake,Spatula,Ping-Pong Paddle,Pancake,Vinyl Record
 Plugging in a Lamp,Power Plug,Lego,Outlet,Pegboard Hole
-Inflating a Tire,Tire Pump,Bicycle Pump,Air [gas],Nitrogen [gas]
+Inflating a Tire,Tire Pump,Bicycle Pump,Air,Nitrogen
 Signing a Check,Pen,Marker,Check,Index Card
 Catching a Fish,Fishing Rod,Broom Handle,Fishing Hook,Paper Clip
 Salting Food,Salt Shaker,Pepper Grinder,Salt,Sand
-Drinking from a Straw,Straw,Pen,Lemonade [liq],Smoothie [liq]
+Drinking from a Straw,Straw,Pen,Lemonade,Smoothie
 Lighting a Match,Match,Crayon,Match Head,Red Marker
-Fanning Yourself,Fan,Magazine,Air [gas],Breeze [gas]
+Fanning Yourself,Fan,Magazine,Air,Breeze
 Sweeping Crumbs,Brush,Toothbrush,Crumbs,Sawdust
-Blowing on Hot Food,Fork,Chopstick,Steam [gas],Breath [gas]
+Blowing on Hot Food,Fork,Chopstick,Steam,Breath
 Handing Someone a Note,Note,Business Card,Hand,Tongs
-Squeezing an Orange,Orange,Stress Ball,Orange Juice [liq],Water [liq]
-Applying Lotion,Lotion Bottle,Mustard Bottle,Lotion [liq],Aloe Gel [liq]
+Squeezing an Orange,Orange,Stress Ball,Orange Juice,Water
+Applying Lotion,Lotion Bottle,Mustard Bottle,Lotion,Aloe Gel
 Opening a Can,Can Opener,Bottle Opener,Tin Can,Flower Pot
 Closing a Suitcase,Suitcase,Cardboard Box,Zipper,Duct Tape
 Picking up a Penny,Penny,Button,Floor,Placemat
 Stapling Papers,Stapler,Hole Punch,Staple,Paper Clip
-Wringing Out a Towel,Towel,T-Shirt,Water [liq],Vinegar [liq]
+Wringing Out a Towel,Towel,T-Shirt,Water,Vinegar
 Snipping with Scissors,Scissors,Tweezers,Paper,Aluminum Foil
 Pushing a Lawn Mower,Lawn Mower,Shopping Cart,Grass,Yarn
 Licking a Stamp,Stamp,Sticker,Envelope,Index Card
 Drying Dishes,Dish Towel,Paper Towel,Plate,Hubcap
 Measuring Flour,Measuring Cup,Ladle,Flour,Baking Soda
-Filling a Bathtub,Faucet,Garden Hose,Water [liq],Bubble Bath [liq]
+Filling a Bathtub,Faucet,Garden Hose,Water,Bubble Bath
 Closing a Door,Door Handle,Wooden Spoon,Door,Cardboard Sheet
-Applying Sunscreen,Sunscreen Bottle,Ketchup Bottle,Sunscreen [liq],Baby Oil [liq]
+Applying Sunscreen,Sunscreen Bottle,Ketchup Bottle,Sunscreen,Baby Oil
 Putting on Gloves,Rubber Glove,Oven Mitt,Hand,Spatula
-Turning a Faucet,Faucet Handle,Doorknob,Water [liq],Vinegar [liq]
-Blowing a Whistle,Whistle,Kazoo,Air [gas],Breath [gas]
-Stirring a Pot,Wooden Spoon,Ruler,Broth [liq],Tomato Soup [liq]
+Turning a Faucet,Faucet Handle,Doorknob,Water,Vinegar
+Blowing a Whistle,Whistle,Kazoo,Air,Breath
+Stirring a Pot,Wooden Spoon,Ruler,Broth,Tomato Soup
 Picking Up Trash,Trash Bag,Pillowcase,Litter,Leaves
 Putting on a Hat,Baseball Cap,Colander,Head,Pumpkin
 Waving Goodbye,Hand,Oven Mitt,Wrist,Banana
 Turning a Steering Wheel,Steering Wheel,Hula Hoop,Hands,Tongs
-Sipping Tea,Teacup,Flower Pot,Tea [liq],Chicken Broth [liq]
+Sipping Tea,Teacup,Flower Pot,Tea,Chicken Broth
 Flossing Teeth,Dental Floss,Fishing Line,Tooth,Corn Kernel
 Clapping Hands,Hand,Oven Mitt,Palm,Cutting Board
 Adjusting a Mirror,Mirror,Framed Photo,Hinge,Popsicle Stick
@@ -113,8 +113,8 @@ Picking Flowers,Flower,Straw,Stem,Pencil
 Peeling Potatoes,Vegetable Peeler,Box Cutter,Potato,Cucumber
 Making a Sandwich,Bread Knife,Ruler,Butter,Peanut Butter
 Tossing a Salad,Salad Tongs,Kitchen Tongs,Lettuce Leaf,Paper
-Pouring Milk,Milk Carton,Juice Box,Milk [liq],Cream [liq]
-Washing Hands,Soap Bar,Chalk,Water [liq],Dish Soap [liq]
+Pouring Milk,Milk Carton,Juice Box,Milk,Cream
+Washing Hands,Soap Bar,Chalk,Water,Dish Soap
 Putting on Socks,Sock,Sandwich Bag,Foot,Banana
 Zipping a Backpack,Backpack,Sleeping Bag,Zipper,Track
 Tying a Knot,Rope,Garden Hose,Loop,Ring
@@ -125,11 +125,11 @@ Building with Blocks,Wooden Block,Cheese Cube,Stack,Tower
 Drawing a Circle,Pencil,Stick,Paper,Cardboard
 Making a Snowball,Snow,Mashed Potatoes,Hands,Oven Mitts
 Scratching an Itch,Fingernail,Comb Tooth,Skin,Balloon
-Splashing in a Puddle,Boot,Galosh,Water [liq],Mud [liq]
+Splashing in a Puddle,Boot,Galosh,Water,Mud
 Picking Up a Coin,Coin,Button,Fingertip,Chopstick
 Hanging a Picture,Picture Hook,Thumbtack,Frame,Mirror
 Placing Stamps,Stamp,Sticker,Envelope,Index Card
-Watering a Garden,Hose,Pipe,Water [liq],Juice [liq]
+Watering a Garden,Hose,Pipe,Water,Juice
 Opening a Bottle,Bottle Cap,Lid,Bottle,Thermos
 Closing a Jar,Jar Lid,Frisbee,Glass Jar,Tin Can
 Rocking a Baby,Baby,Stuffed Bear,Arms,Hammock
@@ -137,8 +137,8 @@ Pushing a Swing,Swing Seat,Tire,Hands,Oven Mitts
 Pulling a Wagon,Wagon Handle,Broom Handle,Wheel,Rolling Pin
 Dragging a Sled,Sled Rope,Leash,Snow,Carpet
 Throwing a Paper Airplane,Paper Airplane,Envelope,Arm,Ruler
-Blowing Bubbles,Bubble Wand,Straw,Soap [liq],Shampoo [liq]
-Squeezing Ketchup,Ketchup Bottle,Squeeze Bottle,Ketchup [liq],Tomato Sauce [liq]
+Blowing Bubbles,Bubble Wand,Straw,Soap,Shampoo
+Squeezing Ketchup,Ketchup Bottle,Squeeze Bottle,Ketchup,Tomato Sauce
 Peeling an Orange,Orange,Tennis Ball,Peel,Rubber Glove
 Cracking Knuckles,Finger,Twig,Joint,Rubber Band
 Pulling on Boots,Boot,Vase,Foot,Pool Noodle End
@@ -163,12 +163,12 @@ Shaking a Piggy Bank,Piggy Bank,Tin Can,Coin,Pebble
 Plugging Ears,Finger,Cork,Ear Canal,Bottle Neck
 Covering Eyes,Hand,Oven Mitt,Eye,Lens
 Twisting a Jar Lid,Jar Lid,Steering Wheel,Hand,Tongs
-Spreading Jam,Jam Spreader,Popsicle Stick,Jam [liq],Honey [liq]
-Dipping a Cookie,Cookie,Graham Cracker,Milk [liq],Hot Chocolate [liq]
+Spreading Jam,Jam Spreader,Popsicle Stick,Jam,Honey
+Dipping a Cookie,Cookie,Graham Cracker,Milk,Hot Chocolate
 Scooping Ice Cream,Ice Cream Scoop,Melon Baller,Ice Cream,Mashed Potato
 Slicing a Pie,Pie Server,Spatula,Pie,Frisbee
-Serving Soup,Ladle,Large Spoon,Soup [liq],Gravy [liq]
-Filling a Glass,Pitcher,Watering Can,Water [liq],Lemonade [liq]
+Serving Soup,Ladle,Large Spoon,Soup,Gravy
+Filling a Glass,Pitcher,Watering Can,Water,Lemonade
 Lifting a Box,Cardboard Box,Crate,Handle,Strap
 Stacking Books,Book,Brick,Stack,Tower
 Hanging Clothes,Clothes Hanger,Wire,Closet Rod,Shower Rod
@@ -182,12 +182,12 @@ Polishing Silver,Silver Polish,Toothpaste,Cloth,Coffee Filter
 Dusting a Shelf,Duster,Feather,Shelf,Plank
 Wiping a Counter,Dish Cloth,Paper Towel,Counter,Cutting Board
 Scrubbing a Pot,Scrub Brush,Toothbrush,Pot,Salad Bowl
-Rinsing Vegetables,Colander,Laundry Basket,Water [liq],Vinegar Water [liq]
-Draining Pasta,Colander,Wire Basket,Pasta Water [liq],Broth [liq]
-Straining a Sauce,Fine Mesh Strainer,Hair Net,Sauce [liq],Gravy [liq]
+Rinsing Vegetables,Colander,Laundry Basket,Water,Vinegar Water
+Draining Pasta,Colander,Wire Basket,Pasta Water,Broth
+Straining a Sauce,Fine Mesh Strainer,Hair Net,Sauce,Gravy
 Greasing a Pan,Pastry Brush,Paintbrush,Butter,Shortening
 Salting Pasta Water,Salt Shaker,Pepper Shaker,Salt,Sugar
-Tasting Food,Spoon,Stick,Sauce [liq],Broth [liq]
+Tasting Food,Spoon,Stick,Sauce,Broth
 Covering a Bowl,Plastic Wrap,Aluminum Foil,Bowl,Pot
 Pressing Tofu,Press,Cutting Board,Tofu,Sponge
 Crumbling Cheese,Hand,Grater,Cheese,Chalk
@@ -195,18 +195,18 @@ Grating Cheese,Box Grater,Cheese Grater,Cheese,Bar of Soap
 Zesting a Lemon,Microplane,Cheese Grater,Lemon Zest,Pencil Shaving
 Julienning a Carrot,Chef Knife,Ruler,Carrot Strip,Popsicle Stick
 Mashing Potatoes,Potato Masher,Fork,Potato,Play-Doh
-Whisking Eggs,Whisk,Fork,Egg [liq],Lemon Juice [liq]
-Beating Cream,Hand Mixer,Whisk,Cream [liq],White Paint [liq]
+Whisking Eggs,Whisk,Fork,Egg,Lemon Juice
+Beating Cream,Hand Mixer,Whisk,Cream,White Paint
 Rolling Cookie Dough,Rolling Pin,Wine Bottle,Dough,Play-Doh
 Cutting Cookies,Cookie Cutter,Ring Mold,Dough,Play-Doh
-Decorating Cupcakes,Piping Bag,Squeeze Bottle,Frosting [liq],Toothpaste [liq]
-Candying Apples,Candy Apple Stick,Chopstick,Caramel [liq],Honey [liq]
+Decorating Cupcakes,Piping Bag,Squeeze Bottle,Frosting,Toothpaste
+Candying Apples,Candy Apple Stick,Chopstick,Caramel,Honey
 Popping Bubble Wrap,Bubble Wrap,Packing Material,Bubble,Air Pocket
 Folding an Origami Crane,Square Paper,Aluminum Foil,Crease,Fold
 Building a Card Tower,Playing Card,Index Card,Stack,Lean
 Spinning a Dreidel,Dreidel,Top,Tip,Pencil Point
 Tossing a Coin,Quarter,Button,Thumbnail,Toothpick
-Shaking a Snow Globe,Snow Globe,Salad Dressing Bottle,Snow [liq mix],Glitter Water [liq]
+Shaking a Snow Globe,Snow Globe,Salad Dressing Bottle,Snow,Glitter Water
 Winding a Music Box,Music Box Key,Allen Wrench,Mainspring,Rubber Band
 Playing Jacks,Jacks Set,Metal Asterisk,Rubber Ball,Bouncy Ball
 Spinning a Fidget Spinner,Fidget Spinner,CD,Bearing,Wheel
@@ -230,7 +230,7 @@ Raking Gravel,Garden Rake,Comb,Gravel,Dry Rice
 Edging a Lawn,Edging Shears,Scissors,Grass Blade,Paper Strip
 Trimming Hedges,Hedge Trimmer,Ruler,Leaf,Piece of Paper
 Filling a Bird Feeder,Seed Scoop,Ladle,Birdseed,Dried Peas
-Changing Bird Bath Water,Garden Pitcher,Watering Can,Water [liq],Bird Bath Water [liq]
+Changing Bird Bath Water,Garden Pitcher,Watering Can,Water,Bird Bath Water
 Setting Up a Hammock,Hammock Strap,Rope,Carabiner,Binder Clip
 Unfolding a Lawn Chair,Lawn Chair,Folding Chair,Armrest,Ruler
 Setting Up a Croquet Wicket,Mallet,Rolling Pin,Wicket,Wire Arch
@@ -266,7 +266,7 @@ Painting Rocks,Paintbrush,Toothbrush,Rock,Eraser
 Making Friendship Bracelets,Embroidery Floss,Thin Ribbon,Knot,Loop
 Gluing a Model,Model Glue,Super Glue Tube,Fuselage,Toilet Paper Roll
 Sanding Wood,Sandpaper,Nail File,Wood Surface,Cutting Board
-Varnishing a Birdhouse,Varnish Brush,Paintbrush,Varnish [liq],Olive Oil [liq]
+Varnishing a Birdhouse,Varnish Brush,Paintbrush,Varnish,Olive Oil
 Nailing a Birdhouse,Finishing Nail,Toothpick,Birdhouse Wall,Cardboard
 Drilling a Hole,Power Drill,Screwdriver,Drill Bit,Pen
 Screwing in a Bolt,Bolt,Pen Cap,Nut,Metal Washer
@@ -275,12 +275,12 @@ Taping a Box,Tape Gun,Tape Dispenser,Packing Tape,Masking Tape
 Labeling a Jar,Label,Sticker,Jar,Tin Can
 Organizing a Drawer,Drawer Divider,Cardboard Strip,Paper Clip,Binder Clip
 Arranging Flowers,Floral Wire,Pipe Cleaner,Stem,Straw
-Filling a Vase,Watering Can,Pitcher,Water [liq],Lemonade [liq]
+Filling a Vase,Watering Can,Pitcher,Water,Lemonade
 Trimming a Wick,Wick Trimmer,Nail Scissors,Wick,String
 Lighting a Candle,Lighter,Match,Wick,String
-Spraying Air Freshener,Aerosol Can,Spray Bottle,Mist [gas],Steam [gas]
-Applying Bug Spray,Bug Spray Can,Water Pistol,Spray [liq],Water [liq]
-Filling a Humidifier,Water Jug,Pitcher,Water [liq],Distilled Water [liq]
+Spraying Air Freshener,Aerosol Can,Spray Bottle,Mist,Steam
+Applying Bug Spray,Bug Spray Can,Water Pistol,Spray,Water
+Filling a Humidifier,Water Jug,Pitcher,Water,Distilled Water
 Changing a Filter,HVAC Filter,Air Filter,Frame,Picture Frame
 Replacing a Battery,AA Battery,Lipstick,Battery Compartment,Pill Box
 Inserting a SIM Card,SIM Ejector,Toothpick,SIM Tray,Tiny Drawer
@@ -291,7 +291,7 @@ Setting an Alarm,Clock Dial,Can Lid,Alarm Hand,Pencil
 Winding a Clock,Clock Key,Allen Wrench,Spring,Rubber Band
 Hanging a Wreath,Wreath Hook,Coat Hook,Wreath,Hula Hoop
 Stringing Popcorn,Needle,Toothpick,Popcorn Kernel,Marshmallow
-Frosting a Window,Frosting Spray,Aerosol Can,Frost [gas],Steam [gas]
+Frosting a Window,Frosting Spray,Aerosol Can,Frost,Steam
 Shoveling a Path,Snow Shovel,Garden Shovel,Snow Path,Flour Path
 Clearing Gutters,Gutter Scoop,Trowel,Leaves,Wet Paper
 Unclogging a Sink,Drain Snake,Flexible Wire,Clog,Wad of Paper
@@ -299,7 +299,7 @@ Testing a Smoke Alarm,Smoke Alarm,Can Lid,Test Button,Coin
 Replacing a Shower Curtain,Curtain Ring,Metal Ring,Shower Rod,Curtain Rod
 Folding a Fitted Sheet,Fitted Sheet,Pillow Case,Corner,Pocket
 Making a Bed,Pillow,Throw Cushion,Fitted Sheet,Tarp
-Fluffing a Pillow,Pillow,Bean Bag,Stuffing,Air [gas]
+Fluffing a Pillow,Pillow,Bean Bag,Stuffing,Air
 Rolling a Burrito,Tortilla,Crepe,Filling,Stuffing
 Wrapping a Gyro,Pita Bread,Newspaper,Foil,Aluminum Foil
 Assembling a Burger,Burger Bun,Dinner Roll,Patty,Hockey Puck
