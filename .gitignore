@@ -1,26 +1,6 @@
-# Maven
-target/
-*.class
-*.jar
-*.war
-*.ear
-*.log
-
-# IDE
-.idea/
-*.iml
-*.iws
-*.ipr
-.vscode/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Spring Boot
-data/
-
-# Build output
-dist/
+node_modules/
+data/flagged.log
+.env
+/package-lock.json
+/.idea/
+/memory/

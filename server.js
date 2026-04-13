@@ -1,0 +1,95 @@
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Parse CSV rows, tracking line numbers (1-based, skipping header)
+function parseCSV(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  const lines = content.split('\n');
+  const activities = [];
+  // skip header (index 0)
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    // Handle quoted fields
+    const cols = parseCSVLine(line);
+    if (cols.length < 5) continue;
+    activities.push({
+      lineNumber: i + 1, // 1-based including header
+      name: cols[0].trim(),
+      s1item1: cols[1].trim(),
+      s1item2: cols[2].trim(),
+      s2item1: cols[3].trim(),
+      s2item2: cols[4].trim()
+    });
+  }
+  return activities;
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      inQuotes = !inQuotes;
+    } else if (ch === ',' && !inQuotes) {
+      result.push(current);
+      current = '';
+    } else {
+      current += ch;
+    }
+  }
+  result.push(current);
+  return result;
+}
+
+app.get('/api/activities/:difficulty', (req, res) => {
+  const { difficulty } = req.params;
+  const allowed = ['Easy', 'Medium', 'Hard'];
+  if (!allowed.includes(difficulty)) {
+    return res.status(400).json({ error: 'Invalid difficulty' });
+  }
+  const filePath = path.join(DATA_DIR, `${difficulty}.csv`);
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: `${difficulty}.csv not found` });
+  }
+  try {
+    const activities = parseCSV(filePath);
+    res.json(activities);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to read activities file' });
+  }
+});
+
+app.post('/api/flag', (req, res) => {
+  const { difficulty, lineNumber, activityName, item1, item2 } = req.body;
+  if (!difficulty || !lineNumber || !activityName) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+  const timestamp = new Date().toISOString();
+  const substitution = (item1 && item2) ? `, substitution=${item1}, ${item2}` : '';
+  const logLine = `[${timestamp}] difficulty=${difficulty} line=${lineNumber} activity=${activityName}${substitution}\n`;
+  const logPath = path.join(DATA_DIR, 'flagged.log');
+  try {
+    fs.appendFileSync(logPath, logLine, 'utf8');
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to write log' });
+  }
+});
+
+app.get('/health', (req, res) => res.json({ ok: true }));
+
+app.listen(PORT, () => {
+  console.log(`Five Things running on port ${PORT}`);
+  console.log(`Data directory: ${DATA_DIR}`);
+});

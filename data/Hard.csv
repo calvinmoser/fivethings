@@ -1,0 +1,334 @@
+Activity Name,S1 Item1,S1 Item2,S2 Item1,S2 Item2
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Playing the Theremin,Theremin Antenna,Radio Antenna,Air [gas],Steam [gas]
+Distilling Whiskey,Still Coil,Copper Tubing,Distillate [liq],Water [liq]
+Glassblowing,Blowpipe,Metal Tube,Molten Glass [liq],Caramel [liq]
+Lockpicking,Tension Wrench,Ruler,Lock Pin,Marble
+Cracking a Safe,Stethoscope,Ear Bud,Safe Dial,Combination Lock
+Operating a Lathe,Turning Tool,Chisel,Wood Shaving,Pencil Shaving
+Taxidermy,Fleshing Tool,Butter Knife,Hide,Leather
+Welding Underwater,Underwater Welder,Scuba Tank,Flux [liq],Motor Oil [liq]
+Performing a C-Section,Retractor,Salad Tongs,Sterile Drape,Aluminum Foil
+Landing a Plane,Yoke,Steering Wheel,Flap,Cardboard Flap
+Defusing a Bomb,Wire Cutter,Scissors,Wire,Licorice
+Tightrope Walking,Balance Pole,Broomstick,Tightrope,Clothesline
+Forging a Sword,Hammer,Mallet,Hot Steel [liq],Caramel [liq]
+Performing an Appendectomy,Laparoscope,Flashlight,Trocar,Corkscrew
+Juggling Fire,Fire Torch,Glow Stick,Flame,Candle
+Operating a Nuclear Reactor,Control Rod,Ruler,Coolant [liq],Water [liq]
+Hunting with a Blowgun,Blowgun,PVC Tube,Air [gas],Breath [gas]
+Calligraphy,Dip Pen,Chopstick,Ink [liq],Soy Sauce [liq]
+Wiring a Circuit Breaker,Wire Stripper,Scissors,Wire,Spaghetti
+Setting a Broken Bone,Cast Bandage,Plaster Strip,Splint,Ruler
+Riding a Unicycle,Unicycle Pedal,Bottle Cap,Seat,Frisbee
+Fencing,Épée,Ruler,Lunge,Jump
+Parkour Vault,Vault Obstacle,Sawhorse,Hand,Oven Mitt
+Making Cheese,Cheese Mold,Colander,Rennet,Vinegar
+Removing a Cataract,Phaco Probe,Pen,Lens,Marble
+Rappelling,Descender,Oval Ring,Rappelling Rope,Bungee Cord
+Playing Bagpipes,Chanter,Recorder,Air [gas],Breath [gas]
+Butchering a Pig,Cleaver,Hatchet,Loin,Pool Noodle
+Mounting a Taxidermy Head,Form,Styrofoam Ball,Hide,Leather
+Performing a Root Canal,Endodontic File,Toothpick,Pulp,Bread Dough
+Detonating Explosives,Blasting Cap,Thumbtack,Detonation Wire,String
+Making Neon Signs,Electrode,Metal Rod,Neon Gas [gas],Argon Gas [gas]
+Harvesting Honey,Uncapping Knife,Butter Knife,Honey [liq],Corn Syrup [liq]
+Engraving Metal,Engraving Tool,Dentist Pick,Metal Shaving,Pencil Shaving
+Performing Dialysis,Dialysis Needle,Straw,Blood [liq],Red Juice [liq]
+Controlling a Marionette,Control Bar,Clothes Hanger,String,Fishing Line
+Playing Sitar,Sitar String,Rubber Band,Gourd Body,Watermelon
+Extracting a Tooth Mold,Dental Tray,Ice Cube Tray,Alginate [liq],Gelatin [liq]
+Performing Acupuncture,Acupuncture Needle,Toothpick,Skin,Balloon
+Fly Tying,Fly Hook,Earring Hook,Thread,Fishing Line
+Making a Flintlock,Flint,Quartz Stone,Powder,Salt
+Setting Type (Letterpress),Lead Type,Domino,Ink [liq],Paint [liq]
+Making Soap,Lye,Baking Soda,Oil [liq],Olive Oil [liq]
+Performing Liposuction,Cannula,Drinking Straw,Fat [liq],Vegetable Oil [liq]
+Making a Compass (Navigation),Magnetized Needle,Sewing Needle,Pivot Point,Eraser
+Rigging a Sailing Ship,Halyard,Rope,Block,Pulley
+Vulcanizing Rubber,Press Mold,Waffle Iron,Sulfur,Yellow Sand
+Flaying an Animal Hide,Fleshing Beam,Ironing Board,Hide,Leather
+Building a Stone Wall,Chisel,Screwdriver,Mortar [liq],Oatmeal
+Operating a Pneumatic Drill,Drill Chuck,Bottle Cap,Compressed Air [gas],Steam [gas]
+Milking a Cow,Teat Cup,Rubber Glove Finger,Milk [liq],Coconut Milk [liq]
+Making Damascus Steel,Forge Tong,Salad Tongs,Billet,Candy Bar
+Installing Electrical Conduit,Conduit Bender,Pipe Bender,EMT Conduit,PVC Pipe
+Performing Laser Eye Surgery,Laser Wand,Pen Light,Corneal Flap,Gelatin
+Making Kombucha,SCOBY,Sponge,Tea [liq],Apple Juice [liq]
+Operating a Linotype Machine,Matrix,Domino,Lead Slug,Eraser
+Harness Racing,Sulky Rein,Rope,Bit,Pen
+Performing an Autopsy,Y-Incision Scalpel,Box Cutter,Organ,Stuffed Animal
+Tig Welding Aluminum,TIG Torch,Marker,Aluminum Pool [liq],Water [liq]
+Making a Tibetan Singing Bowl,Singing Bowl Mallet,Wooden Spoon,Bronze Bowl,Salad Bowl
+Extracting Snake Venom,Venom Milking Cup,Shot Glass,Venom [liq],Lemon Juice [liq]
+Aligning a Telescope,Collimation Cap,Bottle Cap,Primary Mirror,Frisbee
+Hypnotizing Someone,Pocket Watch,Pendulum,Swing Arc,Jump Rope
+Forging a Horseshoe,Anvil,Cinder Block,Hot Iron [liq],Caramel [liq]
+Making Mead,Airlock,Cork,Honey [liq],Corn Syrup [liq]
+Performing a Heimlich Maneuver,Fist,Stress Ball,Abdomen,Pillow
+Bending a Copper Pipe,Pipe Bender,Wrench,Copper Tube,Pool Noodle
+Rendering Animal Fat,Rendering Pot,Deep Pan,Fat [liq],Vegetable Oil [liq]
+Tattooing,Tattoo Machine,Electric Toothbrush,Ink [liq],Food Coloring [liq]
+Making a Flute (Woodworking),Drill Bit,Pen,Wooden Tube,Paper Towel Roll
+Installing a Catalytic Converter,Socket Wrench,Monkey Wrench,Exhaust Pipe,PVC Pipe
+Centrifuging Blood,Centrifuge Rotor,Salad Spinner,Blood [liq],Cranberry Juice [liq]
+Making a Stained Glass Panel,Glass Cutter,Box Cutter,Lead Came,Tape
+Performing a Lumbar Puncture,Spinal Needle,Straw,Cerebrospinal Fluid [liq],Water [liq]
+Tuning a Piano,Tuning Hammer,Allen Wrench,Piano String,Rubber Band
+Casting Fly Fishing Line,Fly Rod,Whip,Fly Line,Jump Rope
+Pressing Olive Oil,Olive Press,Garlic Press,Olives,Grapes
+Making a Longbow,Bow Stave,Broomstick,Bowstring,Rubber Band
+Performing a Spinal Fusion,Pedicle Screw,Bolt,Rod,Dowel
+Making Traditional Cheese Cloth,Cheese Press,Vice,Whey [liq],Lemon Water [liq]
+Removing a Fish Hook,Hook Remover,Pliers,Barb,Wire
+Splicing Rope,Fid,Marlinspike,Strand,Spaghetti
+Operating a Hot Air Balloon,Burner Valve,Blowtorch,Hot Air [gas],Steam [gas]
+Etching Glass,Etching Cream,Toothpaste,Glass Surface,Mirror
+Making Biodiesel,Separatory Funnel,Measuring Cup,Glycerin [liq],Vegetable Oil [liq]
+Welding Rail Tracks,Thermite Torch,Flamethrower,Molten Iron [liq],Caramel Sauce [liq]
+Installing a Hip Replacement,Acetabular Cup,Measuring Cup,Femoral Head,Stress Ball
+Tapping Maple Sap into Syrup,Evaporator,Roasting Pan,Sap [liq],Water [liq]
+Performing Phlebotomy,Vacutainer Tube,Test Tube,Blood [liq],Tomato Juice [liq]
+Making Chainmail,Ring Pliers,Long-nose Pliers,Steel Ring,Metal Washer
+Performing a Dental Crown Prep,Turbine Handpiece,Power Drill,Tooth Shaving,Pencil Shaving
+Making Black Powder,Mortar and Pestle,Bowl and Spoon,Charcoal,Activated Charcoal
+Operating a CNC Machine,End Mill,Pen,Aluminum Chip,Paper Shaving
+Setting a Leg in Traction,Traction Weight,Dumbbell,Leg,Pool Noodle
+Making a Canoe (Birchbark),Awl,Nail,Birch Sheet,Paper
+Processing Film in a Darkroom,Developer Tray,Baking Pan,Developer [liq],Water [liq]
+Performing Cardiac Catheterization,Catheter,Drinking Straw,Contrast Dye [liq],Food Coloring [liq]
+Making Terracotta Pottery,Potter's Rib,Tongue Depressor,Clay Slip [liq],Watered-down Mud [liq]
+Performing Electrolysis,Electrode,Metal Skewer,Electrolyte Solution [liq],Salt Water [liq]
+Shearing Wire with Bolt Cutters,Bolt Cutter,Pliers,Wire,Spaghetti
+Making a Recurve Bow,Bow Limb Tip,Popsicle Stick,Fiberglass,Ruler
+Dissecting a Frog,Dissecting Probe,Toothpick,Organ,Gummy Bear
+Making a Didgeridoo,Gouge,Chisel,Eucalyptus Tube,PVC Pipe
+Performing Rhinoplasty,Osteotome,Chisel,Cartilage,Gelatin
+Installing a Pacemaker,Pacing Lead,Wire,Subcutaneous Pocket,Envelope
+Making Penicillin,Inoculation Loop,Toothpick,Broth [liq],Apple Juice [liq]
+Performing an Angioplasty,Balloon Catheter,Straw,Plaque,Candle Wax
+Making a Cello,Bass Bar,Popsicle Stick,Varnish [liq],Linseed Oil [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing a Lobotomy,Leucotome,Ice Pick,Frontal Lobe,Gelatin Block
+Extracting DNA,Micropipette,Eyedropper,DNA Solution [liq],Salt Water [liq]
+Splitting an Atom,Particle Beam,Laser Pointer,Nucleus,Pea
+Building a Cyclotron,Magnet Coil,Donut Shape,Charged Particle,BB Pellet
+Making Semiconductors,Photomask,Transparency Sheet,Silicon Wafer,Glass Tile
+Growing Crystals,Seed Crystal,Salt Crystal,Saturated Solution [liq],Sugar Water [liq]
+Casting a Prosthetic Limb,Casting Sock,Tube Sock,Plaster [liq],White Slime [liq]
+Performing Microsurgery,Microsurgical Forceps,Tweezers,Blood Vessel,Rubber Band
+Making a Violin,Gouge,Chisel,Spruce Top,Cardboard
+Blowing a Glass Animal,Blowpipe,Metal Tube,Molten Glass [liq],Honey [liq]
+Making Chainsaw Art,Chainsaw Bar,Butter Knife,Wood Chip,Pencil Shaving
+Forging a Katana,Draw Hammer,Mallet,Tamahagane Steel [liq],Caramel [liq]
+Making Mozzarella,Curd Knife,Butter Knife,Whey [liq],Cloudy Water [liq]
+Distilling Essential Oil,Still Head,Bottle,Hydrosol [liq],Floral Water [liq]
+Electroplating Metal,Anode,Metal Strip,Electrolyte [liq],Salt Water [liq]
+Casting Bronze,Crucible Tongs,Salad Tongs,Molten Bronze [liq],Caramel [liq]
+Knapping Flint,Antler Tool,Short Stick,Flint,Rock
+Making a Damascus Knife,Pattern Weld Billet,Chocolate Bar,Weld Line,Stripe
+Performing LASIK,Microkeratome,Box Cutter,Corneal Flap,Gelatin Sheet
+Building a Didgeridoo (PVC),Heat Gun,Hair Dryer,PVC Pipe,Pool Noodle
+Making Paper (Handmade),Deckle Frame,Picture Frame,Pulp [liq],Oatmeal Water [liq]
+Performing Electrophysiology,Patch Clamp Electrode,Toothpick,Cell Membrane,Balloon Skin
+Making a Hot Air Balloon Envelope,Ripstop Nylon,Kite Fabric,Gore Panel,Kite Panel
+Engraving a Gunstock,Engraving Graver,Dentist Pick,Stock Wood,Cutting Board
+Making a Lute,Lute Mold,Salad Bowl Mold,Rib,Cardboard Strip
+Performing Cryosurgery,Cryoprobe,Metal Rod,Liquid Nitrogen [liq],Water [liq]
+Making Nitroglycerine (demo only),Separatory Funnel,Measuring Cup,Acid [liq],Water [liq]
+Calibrating a Mass Spectrometer,Ion Source,Light Bulb,Ion Beam,Laser
+Making a Geiger Counter,GM Tube,Metal Tube,Ionizing Gas [gas],Air [gas]
+Performing Eye Surgery with Robot,Robotic Arm,Toy Arm,Cannula,Straw
+Making Optical Fiber,Preform Rod,Glass Rod,Molten Glass [liq],Honey [liq]
+Casting a Turbine Blade,Investment Mold,Plaster Mold,Superalloy [liq],Caramel [liq]
+Making a Composite Bow,Sinew Layer,Rubber Strip,Horn Layer,Plastic Strip
+Growing Bonsai Wire Training,Aluminum Wire,Pipe Cleaner,Branch,Straw
+Making Soy Sauce,Koji Mold,Bread Mold,Brine [liq],Salt Water [liq]
+Performing Limb Reattachment,Vascular Clamp,Binder Clip,Artery,Rubber Tube
+Making a Clay Kiln,Firebrick,Cinder Block,Flame [gas],Steam [gas]
+Electrospinning Nanofibers,High Voltage Needle,Syringe,Polymer Solution [liq],Glue Water [liq]
+Performing a Gastrectomy,Endoscope,Flexible Camera,Staple Line,Zip Tie
+Making Crystal Meth (prop only),Retort Flask,Beaker,Precursor [liq],Water [liq]
+Making a CPAP Machine,Blower Motor,Fan,Air [gas],Nitrogen [gas]
+Performing a Cochlear Implant,Electrode Array,Wire,Cochlea,Snail Shell
+Making Aerogel,Supercritical Dryer,Pressure Cooker,Silica Gel [liq],Water [liq]
+Building a Solid Rocket Motor,Nozzle,Funnel,Propellant,Play-Doh
+Performing a Bypass Graft,Vascular Clamp,Binder Clip,Saphenous Vein,Rubber Tube
+Making Fullerene (C60),Arc Reactor Electrode,Pencil,Carbon Soot,Charcoal
+Performing a Fasciotomy,Fasciotomy Scissors,Scissors,Fascia,Rubber Mat
+Making Bioplastic,Glycerin,Corn Syrup,Starch Solution [liq],Water [liq]
+Performing Deep Brain Stimulation,DBS Lead,Wire,Brain Target,Gelatin Sphere
+Making a Semiconductor Laser,Cleavage Tool,Butter Knife,Wafer,Glass Tile
+Making Aerosol Propellant,Pressurized Can,Soda Bottle,Propane [gas],CO2 [gas]
+Performing a Facelift,Retractor,Salad Tongs,SMAS Layer,Rubber Sheet
+Making a Glass Microelectrode,Pipette Puller,Flame,Glass Capillary,Straw
+Performing Corneal Transplant,Trephine,Cookie Cutter,Donor Cornea,Gelatin Disc
+Making Ferrofluid,Magnetite Powder,Iron Filing,Carrier Fluid [liq],Vegetable Oil [liq]
+Performing a Thyroidectomy,Harmonic Scalpel,Vibrating Tool,Thyroid Lobe,Gelatin Block
+Making a Hologram,Reference Beam,Laser Pointer,Photosensitive Plate,Glass Plate
+Performing a Hip Arthroscopy,Arthroscope,Pen Light,Portal,Puncture
+Making a Piezoelectric Crystal,Press Mold,Waffle Iron,PZT Ceramic,Tile
+Performing Selective Laser Sintering,Laser Head,Laser Pointer,Powder Bed,Flour Bed
+Making a Thin Film Solar Cell,Sputtering Target,Metal Plate,Semiconductor [liq],Inky Water [liq]
+Performing a Ventriculostomy,Burr Drill,Drill Bit,Skull,Coconut
+Making Shape Memory Alloy Wire,Draw Plate,Metal Die,Nitinol Wire,Wire
+Performing a Stereotactic Biopsy,Stereotactic Frame,Picture Frame,Biopsy Needle,Straw
+Making Bioink for 3D Printing,Bioink Cartridge,Syringe,Cell Suspension [liq],Alginate Gel [liq]
+Performing Laproscopic Cholecystectomy,Clip Applier,Stapler,Cystic Duct,Straw
+Making a Microfluidic Chip,PDMS Mold,Gelatin Mold,Polymer [liq],Silicone [liq]
+Performing Radiofrequency Ablation,RF Probe,Metal Stick,Tumor Tissue,Gelatin
+Making Carbon Nanotube Fibers,Spindle,Spool,CNT Aerogel [gas],Steam [gas]
+Performing a Whipple Procedure,Intestinal Clamp,Binder Clip,Pancreatic Duct,Straw
+Making a Neodymium Magnet,Sintering Press,Weight Press,Powder Compact,Disc
+Performing Hysteroscopy,Hysteroscope,Pen Light,Uterine Cavity,Bottle Interior
+Making Gallium Arsenide Wafer,Czochralski Puller,Fishing Rod,Melt [liq],Hot Caramel [liq]
+Performing an Esophagectomy,Circular Stapler,Hole Punch,Esophageal Tube,Rubber Tube
+Making Hydrogen Fuel Cells,Membrane Electrode,Wet Cloth,Hydrogen [gas],Air [gas]
+Performing a Temporal Lobectomy,Ultrasonic Aspirator,Vibrating Pen,Cortex,Gelatin Block
+Making a MEMS Accelerometer,Photolithography Mask,Transparency,Silicon Beam,Ruler
+Performing Epidural Anesthesia,Tuohy Needle,Hollow Pen,Epidural Space,Gap
+Making a Stirling Engine,Displacer Piston,Wine Cork,Air [gas],Steam [gas]
+Performing Ureteroscopy,Flexible Ureteroscope,Flexible Straw,Stone,Pebble
+Making a Rocket Nozzle,EDM Machine,Drill,Throat,Hole
+Performing a Thyroid Lobectomy,Nerve Monitor Probe,Probe,Thyroid Tissue,Gelatin
+Making a Quantum Dot,Solvent Injection Tip,Syringe,QD Solution [liq],Food Dye [liq]
+Performing TURP (Prostate),Resectoscope,Metal Tube,Tissue Chip,Eraser Shaving
+Making a Fiber Optic Coupler,Fusion Splicer,Tape,Fiber,Hair
+Performing a Maze Procedure,Cryoprobe,Cold Metal Rod,Atrial Wall,Gelatin Sheet
+Making a Microelectrode Array,Tungsten Wire,Sewing Needle,Tip,Pin
+Performing Carotid Endarterectomy,Shunt Tube,Drinking Straw,Plaque,Candle Wax
+Making a Solenoid Valve,Coil Winder,Bobbin,Wire Coil,Rubber Band Coil
+Performing Kyphoplasty,Bone Tamp,Balloon,Bone Cement [liq],Plaster [liq]
+Making a Piezoelectric Buzzer,PZT Disc,Coin,Lead Wire,Thread
+Performing an Adrenalectomy,Laparoscopic Grasper,Salad Tongs,Adrenal Gland,Small Balloon
+Making a Hydraulic Ram Pump,Check Valve,Ball Valve,Water [liq],Juice [liq]
+Performing Shoulder Arthroplasty,Humeral Stem,Dowel,Glenoid Component,Socket
+Making a Gallium Arsenide LED,MOCVD Chamber,Pressure Cooker,Precursor Gas [gas],Steam [gas]
+Performing Pancreatectomy,Laparoscopic Stapler,Stapler,Pancreas,Gelatin Block
+Making Polylactic Acid Filament,Extruder Die,Pasta Extruder,Lactic Acid Melt [liq],Corn Syrup [liq]
+Performing a Kidney Transplant,Vascular Anastomosis Clamp,Binder Clip,Renal Artery,Rubber Tube
+Making a Liquid Crystal Display,Polarizing Film,Transparency Sheet,Liquid Crystal [liq],Clear Gel [liq]
+Performing Arthroscopic ACL Repair,Graft Passer,Wire,Tendon Graft,Rubber Strip
+Making a Nitinol Stent,Mandrel,Dowel,Nitinol Wire,Wire
+Performing a Colectomy,Linear Stapler,Ruler,Bowel Segment,Rubber Tube
+Making Indium Tin Oxide Coating,Magnetron Sputtering Target,Metal Disc,ITO Film [liq],Clear Paint [liq]
+Performing Fetoscopic Surgery,Fetoscope,Pen Light,Amniotic Fluid [liq],Water [liq]
+Making a Thermophotovoltaic Cell,Emitter Grid,Wire Mesh,Thermal Radiation [gas],Heat [gas]
+Performing a Maze Cardiac Procedure,Bipolar Clamp,Binder Clip,Atrial Muscle,Gelatin
+Making Polydimethylsiloxane Molds,Mixing Stick,Popsicle Stick,PDMS [liq],Silicone [liq]
+Performing Peripheral Nerve Block,Regional Needle,Hollow Straw,Local Anesthetic [liq],Water [liq]
+Making a Synthetic Diamond,High-Pressure Press,Vise,Carbon Source,Graphite Pencil
+Performing Cochlear Fluid Analysis,Micropipette,Eyedropper,Perilymph [liq],Water [liq]
+Making a Wankel Engine,Eccentric Shaft,Oval Cam,Rotor,Triangle
+Performing a Mastoidectomy,Cutting Burr,Drill Bit,Mastoid Bone,Walnut
+Making a Solid Oxide Fuel Cell,Screen Printer,Stencil,Electrolyte [liq],Ink [liq]
+Performing Prostatectomy,Robotic Cautery Arm,Toy Robotic Arm,Prostatic Urethra,Straw
+Making a Josephson Junction,Evaporation Mask,Aluminum Foil,Superconductor [liq],Mercury [liq]
+Performing a Liver Resection,CUSA Device,Ultrasonic Cleaner,Liver Tissue,Gelatin Block
+Making a Variable Capacitor,Tuning Plates,Metal Plates,Air Dielectric [gas],Air [gas]
+Performing Trans-Urethral Resection,Rollerball Electrode,Metal Ball,Tissue [liq],Water [liq]
+Making a Thermoelectric Generator,Bismuth Telluride Pellet,Domino,Heat Source,Candle
+Performing Stereotactic Radiosurgery,Gamma Knife Head,Helmet,Radiation Beam,Laser
+Making a Synthetic Sapphire,Verneuil Flame,Torch,Aluminum Oxide Powder,Flour
+Performing Selective Dorsal Rhizotomy,Micro Scissors,Nail Scissors,Nerve Rootlet,Thread
+Making a Tubular Bell,Tuning Machine,Lathe,Bronze Tube,Metal Pipe
+Performing Deep Hypothermic Circulatory Arrest,Cooling Circuit,Pool Tubing,Blood [liq],Red Water [liq]
+Making a Micro Fuel Cell,Nafion Membrane,Wet Paper,Hydrogen [gas],Breath [gas]
+Performing a Pancreatojejunostomy,Suture Passer,Needle,Pancreatic Duct,Straw
+Making Metallic Glass,Melt Spinner,Centrifuge,Alloy Melt [liq],Caramel [liq]
+Performing Laser Lithotripsy,Holmium Laser Fiber,Fiber Optic,Stone Fragment,Pebble
+Making a Wilson Cloud Chamber,Piston,Syringe Plunger,Supersaturated Vapor [gas],Steam [gas]
+Performing a Hemorrhoidectomy,Ferguson Clamp,Binder Clip,Hemorrhoid,Balloon
+Making a Quantum Well Laser,MBE Source,Metal Crucible,Molecular Beam [gas],Steam [gas]
+Performing Functional Endoscopic Sinus Surgery,Microdebrider,Power Drill,Polyp,Marshmallow
+Making a Lithium Sulfur Battery,Sulfur Cathode,Yellow Tile,Lithium Foil,Aluminum Foil
+Performing a Distal Radius ORIF,Volar Plate,Metal Strip,Bone Fragment,Puzzle Piece
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
+Performing Surgery,Scalpel,Box Cutter,Blood [liq],Red Food Dye [liq]
