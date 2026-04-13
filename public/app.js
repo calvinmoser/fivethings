@@ -150,10 +150,14 @@ function pickRandom(pool, difficulty, count, excludeLines) {
 }
 
 // ---- Render ----
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 function subText(item1, item2) {
   return CONFIG.subPhrase
-    .replace('[item1]', item1)
-    .replace('[item2]', item2);
+    .replace('[item1]', `<span class="item-name">${escapeHtml(item1)}</span>`)
+    .replace('[item2]', `<span class="item-name">${escapeHtml(item2)}</span>`);
 }
 
 function renderActivity(actObj, difficulty) {
@@ -161,20 +165,24 @@ function renderActivity(actObj, difficulty) {
   card.className = 'activity-card';
   card.dataset.lineNumber = actObj.lineNumber;
 
-  // Refresh button
+  // Activity header: name + refresh button side by side
+  const header = document.createElement('div');
+  header.className = 'activity-header';
+
+  const nameDiv = document.createElement('div');
+  nameDiv.className = 'activity-name';
+  nameDiv.textContent = actObj.name;
   const refreshBtn = document.createElement('button');
   refreshBtn.className = 'btn-refresh';
   refreshBtn.setAttribute('aria-label', `Refresh activity: ${actObj.name}`);
   refreshBtn.title = 'Get a different activity';
   refreshBtn.textContent = '↻';
   refreshBtn.addEventListener('click', () => refreshActivity(card, difficulty));
-  card.appendChild(refreshBtn);
+  header.appendChild(refreshBtn);
 
-  // Activity name
-  const nameDiv = document.createElement('div');
-  nameDiv.className = 'activity-name';
-  nameDiv.textContent = actObj.name;
-  card.appendChild(nameDiv);
+  header.appendChild(nameDiv);
+
+  card.appendChild(header);
 
   // Flag for activity name
   card.appendChild(makeFlagBtn(difficulty, actObj, 'name', actObj.name));
@@ -182,14 +190,14 @@ function renderActivity(actObj, difficulty) {
   // S1
   const s1Div = document.createElement('div');
   s1Div.className = 'sub-text';
-  s1Div.textContent = subText(actObj.s1item1, actObj.s1item2);
+  s1Div.innerHTML = subText(actObj.s1item1, actObj.s1item2);
   card.appendChild(s1Div);
   card.appendChild(makeFlagBtn(difficulty, actObj, 's1', actObj.s1item1, actObj.s1item2));
 
   // S2
   const s2Div = document.createElement('div');
   s2Div.className = 'sub-text';
-  s2Div.textContent = subText(actObj.s2item1, actObj.s2item2);
+  s2Div.innerHTML = subText(actObj.s2item1, actObj.s2item2);
   card.appendChild(s2Div);
   card.appendChild(makeFlagBtn(difficulty, actObj, 's2', actObj.s2item1, actObj.s2item2));
 

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Comedy mask (left, smiling) -->
+  <ellipse cx="34" cy="46" rx="24" ry="22" fill="#7c3aed" />
+  <ellipse cx="26" cy="42" rx="4" ry="5" fill="#e8d8ff" />
+  <ellipse cx="42" cy="42" rx="4" ry="5" fill="#e8d8ff" />
+  <path d="M22 54 Q34 64 46 54" fill="none" stroke="#e8d8ff" stroke-width="3" stroke-linecap="round"/>
+  <!-- Tragedy mask (right, frowning) -->
+  <ellipse cx="66" cy="54" rx="24" ry="22" fill="#9b59b6" />
+  <ellipse cx="58" cy="50" rx="4" ry="5" fill="#e8d8ff" />
+  <ellipse cx="74" cy="50" rx="4" ry="5" fill="#e8d8ff" />
+  <path d="M54 64 Q66 54 78 64" fill="none" stroke="#e8d8ff" stroke-width="3" stroke-linecap="round"/>
+</svg>
