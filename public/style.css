@@ -79,6 +79,90 @@ body.theme-rainbow {
   }
 }
 
+/* ---- Spotlight — stage black, golden amber ---- */
+body.theme-spotlight {
+  --bg:           #0a0a0a;
+  --bg-surface:   #181818;
+  --bg-elevated:  #242424;
+  --text:         #fff8e0;
+  --text-muted:   #aa9966;
+  --accent:       #f0b030;
+  --accent-hover: #ffd060;
+  --accent-dim:   #c08020;
+  --border:       #38301a;
+  --flag-color:   #e8734a;
+  --flag-hover:   #ff8c5a;
+  --flag-bg:      rgba(232, 115, 74, 0.12);
+  --curtain-fold: rgba(255, 220, 80, 0.4);
+  --rainbow: none;
+  /* Curtain: classic red velvet */
+  --cs1: #500010; --cs2: #880020; --cs3: #bb1030;
+  --cs4: #880020; --cs5: #500010; --cs6: #1a0005;
+}
+
+/* ---- Greasepaint — vaudeville warm sepia ---- */
+body.theme-greasepaint {
+  --bg:           #1a1008;
+  --bg-surface:   #2a1c10;
+  --bg-elevated:  #3a2818;
+  --text:         #f5e8c8;
+  --text-muted:   #c0a070;
+  --accent:       #cc3333;
+  --accent-hover: #ff5555;
+  --accent-dim:   #882222;
+  --border:       #5a3820;
+  --flag-color:   #e8a030;
+  --flag-hover:   #ffbe50;
+  --flag-bg:      rgba(232, 160, 48, 0.12);
+  --curtain-fold: rgba(255, 200, 100, 0.35);
+  --rainbow: none;
+  /* Curtain: warm burgundy/amber velvet */
+  --cs1: #3a1500; --cs2: #702000; --cs3: #b04000;
+  --cs4: #702000; --cs5: #3a1500; --cs6: #140800;
+}
+
+/* ---- Neon Stage — electric cyan & magenta ---- */
+body.theme-neon {
+  --bg:           #050510;
+  --bg-surface:   #0c0c20;
+  --bg-elevated:  #141430;
+  --text:         #e0e0ff;
+  --text-muted:   #7070b0;
+  --accent:       #00e5ff;
+  --accent-hover: #60ffff;
+  --accent-dim:   #0090b0;
+  --border:       #1a1a40;
+  --flag-color:   #ff00aa;
+  --flag-hover:   #ff44cc;
+  --flag-bg:      rgba(255, 0, 170, 0.12);
+  --curtain-fold: rgba(0, 229, 255, 0.5);
+  --rainbow: linear-gradient(90deg, #00e5ff 0%, #ff00ff 50%, #00e5ff 100%);
+  /* Curtain: deep electric indigo */
+  --cs1: #000060; --cs2: #001090; --cs3: #0020cc;
+  --cs4: #001090; --cs5: #000060; --cs6: #000020;
+}
+
+/* ---- Sock & Buskin — comedy/tragedy teal & gold ---- */
+body.theme-sockbuskin {
+  --bg:           #0a1520;
+  --bg-surface:   #102030;
+  --bg-elevated:  #183040;
+  --text:         #e8f4f0;
+  --text-muted:   #80a8a0;
+  --accent:       #20c8a0;
+  --accent-hover: #40e8c0;
+  --accent-dim:   #108060;
+  --border:       #204050;
+  --flag-color:   #e8b030;
+  --flag-hover:   #ffd050;
+  --flag-bg:      rgba(232, 176, 48, 0.12);
+  --curtain-fold: rgba(32, 200, 160, 0.4);
+  --rainbow: none;
+  /* Curtain: deep teal-navy */
+  --cs1: #001830; --cs2: #003050; --cs3: #005070;
+  --cs4: #003050; --cs5: #001830; --cs6: #000810;
+}
+
 /* ---- Reset & Base ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -161,12 +245,6 @@ body {
   padding: 0.35rem 0.75rem;
 }
 
-.theme-picker select {
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
-}
-
 .theme-picker label {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.7);
@@ -177,6 +255,9 @@ body {
 }
 
 .theme-picker select {
+  background: #1a1a2e;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.85rem;
   padding: 0.2rem 0.4rem;
   width: auto;
@@ -202,7 +283,8 @@ header h1 {
   text-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
 }
 
-body.theme-rainbow header h1 {
+body.theme-rainbow header h1,
+body.theme-neon header h1 {
   color: transparent;
   text-shadow: none;
   background: var(--rainbow);
@@ -285,14 +367,17 @@ select:focus {
   outline-offset: 2px;
 }
 
-body.theme-rainbow .btn-primary {
+body.theme-rainbow .btn-primary,
+body.theme-neon .btn-primary {
   background: var(--rainbow);
   color: #0a0a0f;
   font-weight: 700;
 }
 
 body.theme-rainbow .btn-primary:hover,
-body.theme-rainbow .btn-primary:focus-visible {
+body.theme-rainbow .btn-primary:focus-visible,
+body.theme-neon .btn-primary:hover,
+body.theme-neon .btn-primary:focus-visible {
   opacity: 0.85;
   background: var(--rainbow);
 }
@@ -401,7 +486,8 @@ body.theme-rainbow .btn-primary:focus-visible {
   align-self: center;
 }
 
-body.theme-rainbow .activity-name {
+body.theme-rainbow .activity-name,
+body.theme-neon .activity-name {
   color: transparent;
   background: var(--rainbow);
   -webkit-background-clip: text;

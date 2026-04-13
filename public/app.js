@@ -81,7 +81,7 @@ for (let i = 1; i <= CONFIG.maxDropdown; i++) {
 diffSelect.value = CONFIG.defaultDifficulty;
 
 // ---- Theme ----
-const THEMES = ['default', 'rainbow'];
+const THEMES = ['default', 'rainbow', 'spotlight', 'greasepaint', 'neon', 'sockbuskin'];
 
 function applyTheme(theme) {
   document.body.classList.remove(...THEMES.map(t => `theme-${t}`));
