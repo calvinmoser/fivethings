@@ -115,22 +115,7 @@ function startCurtain() {
   }, { once: true });
 }
 
-// Freeze curtain panels at their current rendered position
 let curtainStopped = false;
-function stopCurtain() {
-  if (curtainStopped) return;
-  curtainStopped = true;
-  const leftPanel = document.getElementById('curtainLeft');
-  const rightPanel = document.getElementById('curtainRight');
-  // Snapshot the current computed matrix so panels freeze mid-accordion
-  leftPanel.style.transform = getComputedStyle(leftPanel).transform;
-  rightPanel.style.transform = getComputedStyle(rightPanel).transform;
-  curtainContainer.classList.remove('animate-open');
-  curtainContainer.classList.add('open-done');
-}
-
-document.addEventListener('pointerdown', stopCurtain, { once: true });
-document.addEventListener('keydown', stopCurtain, { once: true });
 
 // ---- Fetch pool ----
 async function fetchPool(difficulty) {
