@@ -1,13 +1,37 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const livereload = require("livereload");
+const connectLiveReload = require("connect-livereload");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 
+// Create a server and watch your public folder
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'));
+
+// Use the middleware (put this before your routes)
+app.use(connectLiveReload());
+
+// Signal a refresh when the server restarts (optional but helpful)
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => { liveReloadServer.refresh("/"); }, 100);
+});
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+  const logPath = path.join(DATA_DIR, 'access.log');
+  const message = `${new Date().toISOString()} - ${req.method} ${req.url} - IP: ${req.ip}`;
+    console.log(message);
+    fs.appendFile(logPath, message + '\n', (err) => {
+      if (err) console.log("Error writing to " + logPath);
+    });
+    next(); // Pass control to the next handler
+});
 
 // Parse CSV rows, tracking line numbers (1-based, skipping header)
 function parseCSV(filePath) {

@@ -2,7 +2,7 @@ services:
   fivethings:
     build: .
     ports:
-      - "3000:3000"
+      - "55560:80"
     volumes:
       - ./data:/data
     environment:

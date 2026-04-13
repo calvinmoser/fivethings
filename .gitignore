@@ -4,3 +4,4 @@ data/flagged.log
 /package-lock.json
 /.idea/
 /memory/
+/data/access.log
