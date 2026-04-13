@@ -8,7 +8,7 @@ const CONFIG = {
   defaultDifficulty: 'Easy',
   maxDropdown: 20,
   subPhrase: 'Replace [item1] with [item2]',
-  curtainOpenDuration: 1000,   // ms
+  curtainOpenDuration: 5000,   // ms
   version: '0.0.1-beta'
 };
 
@@ -93,11 +93,19 @@ function startCurtain() {
   }, { once: true });
 }
 
-// Stop curtain on first interaction
+// Freeze curtain panels at their current rendered position
 let curtainStopped = false;
 function stopCurtain() {
   if (curtainStopped) return;
   curtainStopped = true;
+  const leftPanel = document.getElementById('curtainLeft');
+  const rightPanel = document.getElementById('curtainRight');
+  // Capture computed transform so panels freeze in place
+  const leftStyle = getComputedStyle(leftPanel);
+  const rightStyle = getComputedStyle(rightPanel);
+  leftPanel.style.transform = leftStyle.transform;
+  rightPanel.style.transform = rightStyle.transform;
+  curtainContainer.classList.remove('animate-open');
   curtainContainer.classList.add('open-done');
 }
 

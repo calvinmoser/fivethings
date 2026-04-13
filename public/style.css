@@ -19,10 +19,10 @@
   --flag-hover:   #ff8c5a;
   --flag-bg:      rgba(232, 115, 74, 0.12);
 
-  /* Curtain colors */
-  --curtain-dark: #3d0a0a;
-  --curtain-mid:  #7a1a1a;
-  --curtain-fold: #ff6666;
+  /* Curtain colors — dark purple theme */
+  --curtain-dark: #0d0520;
+  --curtain-mid:  #3a1a6e;
+  --curtain-fold: #b07fd4;
 }
 
 @media (prefers-color-scheme: light) {
@@ -83,10 +83,10 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .curtain-container.animate-open #curtainLeft {
-    animation: curtainOpenLeft var(--curtain-open-duration, 1s) ease-in-out forwards;
+    animation: curtainOpenLeft var(--curtain-open-duration, 5s) ease-in-out forwards;
   }
   .curtain-container.animate-open #curtainRight {
-    animation: curtainOpenRight var(--curtain-open-duration, 1s) ease-in-out forwards;
+    animation: curtainOpenRight var(--curtain-open-duration, 5s) ease-in-out forwards;
   }
 
   @keyframes curtainOpenLeft {
@@ -99,16 +99,21 @@ body {
   }
 }
 
-/* When fully open, hide the curtain so it doesn't block interaction */
-.curtain-container.open-done {
-  display: none;
+/* Curtain stopped/done — freeze panels off-screen, keep container in DOM */
+.curtain-container.open-done #curtainLeft {
+  transform: translateX(-100%);
+  animation: none;
+}
+.curtain-container.open-done #curtainRight {
+  transform: translateX(100%);
+  animation: none;
 }
 
 /* ---- Page wrapper ---- */
 .page-wrapper {
   max-width: 860px;
   margin: 0 auto;
-  padding: 2rem 1.25rem 3rem;
+  padding: 8rem 1.25rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -125,22 +130,30 @@ header h1 {
 }
 
 /* ---- Controls ---- */
-.controls {
+.content-col {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2rem;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
   gap: 1rem;
   align-items: flex-end;
   background: var(--bg-surface);
   padding: 1.25rem 1.5rem;
   border-radius: 10px;
   border: 1px solid var(--border);
+  width: 100%;
 }
 
 .control-group {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  flex: 1 1 140px;
 }
 
 .control-group label {
@@ -160,6 +173,7 @@ select {
   font-size: 1rem;
   cursor: pointer;
   appearance: auto;
+  width: 100%;
 }
 
 select:focus {
@@ -231,6 +245,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
 }
 
 .activity-card {
