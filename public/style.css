@@ -3,7 +3,6 @@
    ============================================================ */
 
 :root {
-  /* Dark purple palette */
   --bg:           #1a0a2e;
   --bg-surface:   #2a1a42;
   --bg-elevated:  #3a2458;
@@ -14,12 +13,10 @@
   --accent-dim:   #6c3d8a;
   --border:       #4a3468;
 
-  /* Flag / error colors — accessible on dark purple */
   --flag-color:   #e8734a;
   --flag-hover:   #ff8c5a;
   --flag-bg:      rgba(232, 115, 74, 0.12);
 
-  /* Curtain colors — dark purple theme */
   --curtain-dark: #0d0520;
   --curtain-mid:  #3a1a6e;
   --curtain-fold: #b07fd4;
@@ -70,42 +67,40 @@ body {
   height: 100%;
 }
 
-/* Left panel starts covering full left half (translateX 0), opens to left */
+/* Left panel accordions toward the left edge */
 #curtainLeft {
   transform-origin: left center;
-  transform: translateX(0%);
+  transform: scaleX(1);
 }
-/* Right panel starts covering full right half, opens to right */
+/* Right panel accordions toward the right edge */
 #curtainRight {
   transform-origin: right center;
-  transform: translateX(0%);
+  transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .curtain-container.animate-open #curtainLeft {
-    animation: curtainOpenLeft var(--curtain-open-duration, 5s) ease-in-out forwards;
+    animation: curtainAccordionLeft var(--curtain-open-duration, 5s) ease-in-out forwards;
   }
   .curtain-container.animate-open #curtainRight {
-    animation: curtainOpenRight var(--curtain-open-duration, 5s) ease-in-out forwards;
+    animation: curtainAccordionRight var(--curtain-open-duration, 5s) ease-in-out forwards;
   }
 
-  @keyframes curtainOpenLeft {
-    from { transform: translateX(0%); }
-    to   { transform: translateX(-100%); }
+  @keyframes curtainAccordionLeft {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0.04); }
   }
-  @keyframes curtainOpenRight {
-    from { transform: translateX(0%); }
-    to   { transform: translateX(100%); }
+  @keyframes curtainAccordionRight {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0.04); }
   }
 }
 
-/* Curtain stopped/done — freeze panels off-screen, keep container in DOM */
+/* Curtain stopped/done — freeze as thin strip at each edge */
 .curtain-container.open-done #curtainLeft {
-  transform: translateX(-100%);
   animation: none;
 }
 .curtain-container.open-done #curtainRight {
-  transform: translateX(100%);
   animation: none;
 }
 

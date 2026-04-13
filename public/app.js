@@ -89,7 +89,13 @@ function startCurtain() {
   }
   curtainContainer.classList.add('animate-open');
   curtainContainer.addEventListener('animationend', () => {
+    const leftPanel = document.getElementById('curtainLeft');
+    const rightPanel = document.getElementById('curtainRight');
+    leftPanel.style.transform = getComputedStyle(leftPanel).transform;
+    rightPanel.style.transform = getComputedStyle(rightPanel).transform;
+    curtainContainer.classList.remove('animate-open');
     curtainContainer.classList.add('open-done');
+    curtainStopped = true;
   }, { once: true });
 }
 
@@ -100,11 +106,9 @@ function stopCurtain() {
   curtainStopped = true;
   const leftPanel = document.getElementById('curtainLeft');
   const rightPanel = document.getElementById('curtainRight');
-  // Capture computed transform so panels freeze in place
-  const leftStyle = getComputedStyle(leftPanel);
-  const rightStyle = getComputedStyle(rightPanel);
-  leftPanel.style.transform = leftStyle.transform;
-  rightPanel.style.transform = rightStyle.transform;
+  // Snapshot the current computed matrix so panels freeze mid-accordion
+  leftPanel.style.transform = getComputedStyle(leftPanel).transform;
+  rightPanel.style.transform = getComputedStyle(rightPanel).transform;
   curtainContainer.classList.remove('animate-open');
   curtainContainer.classList.add('open-done');
 }
