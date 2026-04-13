@@ -11,15 +11,33 @@
   <div class="curtain-container" id="curtainContainer" aria-hidden="true">
     <svg id="curtainSvg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 200 100">
       <defs>
+        <!-- Left panel: red (outer edge) → violet (inner/center) -->
         <linearGradient id="curtainGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:var(--curtain-dark)" />
-          <stop offset="40%" style="stop-color:var(--curtain-mid)" />
-          <stop offset="100%" style="stop-color:var(--curtain-dark)" />
+          <stop offset="0%"   stop-color="#cc1111" />
+          <stop offset="20%"  stop-color="#cc5500" />
+          <stop offset="40%"  stop-color="#ccaa00" />
+          <stop offset="60%"  stop-color="#117722" />
+          <stop offset="80%"  stop-color="#1144bb" />
+          <stop offset="100%" stop-color="#220033" />
         </linearGradient>
+        <!-- Right panel: dark center → violet → red (outer edge) -->
         <linearGradient id="curtainGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:var(--curtain-dark)" />
-          <stop offset="60%" style="stop-color:var(--curtain-mid)" />
-          <stop offset="100%" style="stop-color:var(--curtain-dark)" />
+          <stop offset="0%"   stop-color="#220033" />
+          <stop offset="20%"  stop-color="#6611bb" />
+          <stop offset="40%"  stop-color="#2266cc" />
+          <stop offset="60%"  stop-color="#117722" />
+          <stop offset="80%"  stop-color="#cc8800" />
+          <stop offset="100%" stop-color="#cc1111" />
+        </linearGradient>
+        <!-- Valance gradient -->
+        <linearGradient id="valanceGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#cc1111" />
+          <stop offset="17%"  stop-color="#cc5500" />
+          <stop offset="33%"  stop-color="#ccaa00" />
+          <stop offset="50%"  stop-color="#117722" />
+          <stop offset="67%"  stop-color="#1144bb" />
+          <stop offset="83%"  stop-color="#6611bb" />
+          <stop offset="100%" stop-color="#cc1111" />
         </linearGradient>
       </defs>
       <!-- Left curtain panel -->
@@ -41,8 +59,8 @@
         <path d="M120,0 Q125,25 120,50 Q125,75 120,100" fill="none" stroke="var(--curtain-fold)" stroke-width="0.5" opacity="0.4"/>
       </g>
       <!-- Valance (top bar) -->
-      <rect x="0" y="0" width="200" height="6" fill="var(--curtain-dark)" />
-      <path d="M0,6 Q25,12 50,6 Q75,12 100,6 Q125,12 150,6 Q175,12 200,6" fill="var(--curtain-mid)" stroke="var(--curtain-dark)" stroke-width="0.5"/>
+      <rect x="0" y="0" width="200" height="6" fill="url(#valanceGrad)" />
+      <path d="M0,6 Q25,12 50,6 Q75,12 100,6 Q125,12 150,6 Q175,12 200,6" fill="url(#valanceGrad)" stroke="var(--curtain-dark)" stroke-width="0.5"/>
     </svg>
   </div>
 

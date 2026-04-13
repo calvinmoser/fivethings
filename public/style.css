@@ -1,38 +1,41 @@
 /* ============================================================
-   Five Things — Dark Purple Theme
+   Five Things — Rainbow Theme
    ============================================================ */
 
 :root {
-  --bg:           #1a0a2e;
-  --bg-surface:   #2a1a42;
-  --bg-elevated:  #3a2458;
-  --text:         #e8d8ff;
-  --text-muted:   #a090c0;
-  --accent:       #9b59b6;
-  --accent-hover: #b07fd4;
-  --accent-dim:   #6c3d8a;
-  --border:       #4a3468;
+  --bg:           #0a0a0f;
+  --bg-surface:   #14141e;
+  --bg-elevated:  #1e1e2e;
+  --text:         #f0f0f8;
+  --text-muted:   #8888aa;
+  --accent:       #a855f7;
+  --accent-hover: #c084fc;
+  --accent-dim:   #7c3aed;
+  --border:       #2a2a44;
 
   --flag-color:   #e8734a;
   --flag-hover:   #ff8c5a;
   --flag-bg:      rgba(232, 115, 74, 0.12);
 
-  --curtain-dark: #0d0520;
-  --curtain-mid:  #3a1a6e;
-  --curtain-fold: #b07fd4;
+  --rainbow: linear-gradient(90deg,
+    #ff3333 0%, #ff8800 17%, #ffee00 33%,
+    #33cc55 50%, #3388ff 67%, #aa33ff 83%, #ff33bb 100%);
+
+  --curtain-dark: #050508;
+  --curtain-fold: rgba(255,255,255,0.6);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg:           #f0e8ff;
-    --bg-surface:   #e0d0f8;
-    --bg-elevated:  #d0b8f0;
-    --text:         #1a0a2e;
-    --text-muted:   #5a408a;
-    --accent:       #7b2fa0;
-    --accent-hover: #9b4fc0;
-    --accent-dim:   #c090e0;
-    --border:       #b090d8;
+    --bg:           #f8f8ff;
+    --bg-surface:   #ededf8;
+    --bg-elevated:  #ddddf0;
+    --text:         #111118;
+    --text-muted:   #55556a;
+    --accent:       #7c3aed;
+    --accent-hover: #a855f7;
+    --accent-dim:   #c084fc;
+    --border:       #c0c0e0;
     --flag-color:   #c0442a;
     --flag-hover:   #e0552a;
     --flag-bg:      rgba(192, 68, 42, 0.1);
@@ -119,9 +122,11 @@ header h1 {
   font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--accent-hover);
   text-align: center;
-  text-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
+  background: var(--rainbow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ---- Controls ---- */
@@ -178,22 +183,22 @@ select:focus {
 
 /* ---- Buttons ---- */
 .btn-primary {
-  background: var(--accent);
-  color: #fff;
+  background: var(--rainbow);
+  color: #0a0a0f;
   border: none;
   border-radius: 6px;
   padding: 0.6rem 1.4rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: opacity 0.15s;
   align-self: flex-end;
   white-space: nowrap;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: var(--accent-hover);
+  opacity: 0.85;
   outline: 2px solid var(--accent-hover);
   outline-offset: 2px;
 }
@@ -256,7 +261,14 @@ select:focus {
 }
 
 .activity-card:hover {
-  border-color: var(--accent-dim);
+  border-color: transparent;
+  box-shadow: 0 0 0 1px transparent,
+              inset 0 0 0 1px transparent;
+  outline: 1px solid;
+  outline-color: var(--accent-hover);
+  /* Rainbow glow */
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4),
+              0 0 2px rgba(255, 51, 51, 0.3);
 }
 
 /* refresh button — left column, spans all rows */
@@ -291,8 +303,11 @@ select:focus {
   grid-column: 2;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--accent-hover);
   align-self: center;
+  background: var(--rainbow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* substitution rows */
