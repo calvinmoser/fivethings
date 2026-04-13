@@ -1,8 +1,49 @@
 /* ============================================================
-   Five Things — Rainbow Theme
+   Five Things — Themes
    ============================================================ */
 
-:root {
+/* ---- Default (Dark Purple) ---- */
+:root,
+body.theme-default {
+  --bg:           #1a0a2e;
+  --bg-surface:   #2a1a42;
+  --bg-elevated:  #3a2458;
+  --text:         #e8d8ff;
+  --text-muted:   #a090c0;
+  --accent:       #9b59b6;
+  --accent-hover: #b07fd4;
+  --accent-dim:   #6c3d8a;
+  --border:       #4a3468;
+  --flag-color:   #e8734a;
+  --flag-hover:   #ff8c5a;
+  --flag-bg:      rgba(232, 115, 74, 0.12);
+  --curtain-fold: #b07fd4;
+  --rainbow: none;
+  /* Curtain gradient stops: left panel outer→inner, right mirrors */
+  --cs1: #1a0050; --cs2: #3a0880; --cs3: #6a2ec0;
+  --cs4: #3a0880; --cs5: #1a0050; --cs6: #0d0520;
+}
+
+@media (prefers-color-scheme: light) {
+  :root,
+  body.theme-default {
+    --bg:           #f0e8ff;
+    --bg-surface:   #e0d0f8;
+    --bg-elevated:  #d0b8f0;
+    --text:         #1a0a2e;
+    --text-muted:   #5a408a;
+    --accent:       #7b2fa0;
+    --accent-hover: #9b4fc0;
+    --accent-dim:   #c090e0;
+    --border:       #b090d8;
+    --flag-color:   #c0442a;
+    --flag-hover:   #e0552a;
+    --flag-bg:      rgba(192, 68, 42, 0.1);
+  }
+}
+
+/* ---- Rainbow ---- */
+body.theme-rainbow {
   --bg:           #0a0a0f;
   --bg-surface:   #14141e;
   --bg-elevated:  #1e1e2e;
@@ -12,21 +53,20 @@
   --accent-hover: #c084fc;
   --accent-dim:   #7c3aed;
   --border:       #2a2a44;
-
   --flag-color:   #e8734a;
   --flag-hover:   #ff8c5a;
   --flag-bg:      rgba(232, 115, 74, 0.12);
-
+  --curtain-fold: rgba(255,255,255,0.6);
   --rainbow: linear-gradient(90deg,
     #ff3333 0%, #ff8800 17%, #ffee00 33%,
     #33cc55 50%, #3388ff 67%, #aa33ff 83%, #ff33bb 100%);
-
-  --curtain-dark: #050508;
-  --curtain-fold: rgba(255,255,255,0.6);
+  /* Curtain gradient stops: rainbow left→right */
+  --cs1: #cc1111; --cs2: #cc5500; --cs3: #ccaa00;
+  --cs4: #117722; --cs5: #1144bb; --cs6: #220033;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
+  body.theme-rainbow {
     --bg:           #f8f8ff;
     --bg-surface:   #ededf8;
     --bg-elevated:  #ddddf0;
@@ -36,9 +76,6 @@
     --accent-hover: #a855f7;
     --accent-dim:   #c084fc;
     --border:       #c0c0e0;
-    --flag-color:   #c0442a;
-    --flag-hover:   #e0552a;
-    --flag-bg:      rgba(192, 68, 42, 0.1);
   }
 }
 
@@ -107,6 +144,44 @@ body {
   animation: none;
 }
 
+/* ---- Theme picker ---- */
+.theme-picker {
+  position: fixed;
+  top: 1rem;
+  right: 3rem;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+}
+
+.theme-picker select {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.theme-picker label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.theme-picker select {
+  font-size: 0.85rem;
+  padding: 0.2rem 0.4rem;
+  width: auto;
+}
+
 /* ---- Page wrapper ---- */
 .page-wrapper {
   max-width: 860px;
@@ -123,6 +198,13 @@ header h1 {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-align: center;
+  color: var(--accent-hover);
+  text-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
+}
+
+body.theme-rainbow header h1 {
+  color: transparent;
+  text-shadow: none;
   background: var(--rainbow);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -183,24 +265,36 @@ select:focus {
 
 /* ---- Buttons ---- */
 .btn-primary {
-  background: var(--rainbow);
-  color: #0a0a0f;
+  background: var(--accent);
+  color: #fff;
   border: none;
   border-radius: 6px;
   padding: 0.6rem 1.4rem;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: background 0.15s, opacity 0.15s;
   align-self: flex-end;
   white-space: nowrap;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  opacity: 0.85;
+  background: var(--accent-hover);
   outline: 2px solid var(--accent-hover);
   outline-offset: 2px;
+}
+
+body.theme-rainbow .btn-primary {
+  background: var(--rainbow);
+  color: #0a0a0f;
+  font-weight: 700;
+}
+
+body.theme-rainbow .btn-primary:hover,
+body.theme-rainbow .btn-primary:focus-visible {
+  opacity: 0.85;
+  background: var(--rainbow);
 }
 
 .btn-secondary {
@@ -303,7 +397,12 @@ select:focus {
   grid-column: 2;
   font-size: 1.05rem;
   font-weight: 700;
+  color: var(--accent-hover);
   align-self: center;
+}
+
+body.theme-rainbow .activity-name {
+  color: transparent;
   background: var(--rainbow);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

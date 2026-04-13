@@ -56,6 +56,7 @@ let currentDifficulty = CONFIG.defaultDifficulty;
 // ---- DOM refs ----
 const numSelect = document.getElementById('numSuggestions');
 const diffSelect = document.getElementById('difficulty');
+const themeSelect = document.getElementById('themeSelect');
 const getBtn = document.getElementById('getActivities');
 const area = document.getElementById('activitiesArea');
 const modal = document.getElementById('flagModal');
@@ -78,6 +79,21 @@ for (let i = 1; i <= CONFIG.maxDropdown; i++) {
 
 // Set default difficulty
 diffSelect.value = CONFIG.defaultDifficulty;
+
+// ---- Theme ----
+const THEMES = ['default', 'rainbow'];
+
+function applyTheme(theme) {
+  document.body.classList.remove(...THEMES.map(t => `theme-${t}`));
+  document.body.classList.add(`theme-${theme}`);
+  localStorage.setItem('fivethings_theme', theme);
+  themeSelect.value = theme;
+}
+
+// Restore saved theme or default
+applyTheme(localStorage.getItem('fivethings_theme') || 'default');
+
+themeSelect.addEventListener('change', () => applyTheme(themeSelect.value));
 
 // ---- Curtain animation ----
 const curtainContainer = document.getElementById('curtainContainer');
