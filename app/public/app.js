@@ -98,11 +98,21 @@ themeSelect.addEventListener('change', () => applyTheme(themeSelect.value));
 // ---- Curtain animation ----
 const curtainContainer = document.getElementById('curtainContainer');
 
+function calcCurtainTargetScale() {
+  const contentCol = document.querySelector('.content-col');
+  if (!contentCol) return 0.04;
+  const rect = contentCol.getBoundingClientRect();
+  const panelWidth = window.innerWidth / 2;
+  if (panelWidth === 0) return 0.04;
+  return Math.max(0, Math.min(1, rect.left / panelWidth));
+}
+
 function startCurtain() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     curtainContainer.classList.add('open-done');
     return;
   }
+  curtainContainer.style.setProperty('--curtain-target-scale', calcCurtainTargetScale());
   curtainContainer.classList.add('animate-open');
   curtainContainer.addEventListener('animationend', () => {
     const leftPanel = document.getElementById('curtainLeft');

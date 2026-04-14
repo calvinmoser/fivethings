@@ -223,11 +223,11 @@ body {
 
   @keyframes curtainAccordionLeft {
     from { transform: scaleX(1); }
-    to   { transform: scaleX(0.04); }
+    to   { transform: scaleX(var(--curtain-target-scale, 0.04)); }
   }
   @keyframes curtainAccordionRight {
     from { transform: scaleX(1); }
-    to   { transform: scaleX(0.04); }
+    to   { transform: scaleX(var(--curtain-target-scale, 0.04)); }
   }
 }
 
