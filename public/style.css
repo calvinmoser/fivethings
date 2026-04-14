@@ -166,7 +166,7 @@ body.theme-sockbuskin {
 /* ---- Reset & Base ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 16px; }
+html { font-size: 16px; min-width: 400px; }
 
 body {
   background-color: var(--bg);
@@ -368,6 +368,10 @@ select:focus {
   transition: background 0.15s, opacity 0.15s;
   align-self: flex-end;
   white-space: nowrap;
+}
+
+.btn-primary-short-text {
+  display: none;
 }
 
 .btn-primary:hover,
@@ -630,13 +634,22 @@ footer .version {
 /* ---- Responsive ---- */
 @media (max-width: 540px) {
   .controls {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    align-items: stretch;
   }
-  .controls .btn-primary {
-    grid-column: 1 / -1;
+  .btn-primary {
+    align-self: stretch;
     text-align: center;
   }
   .activity-card {
     padding: 0.85rem 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .btn-primary-long-text {
+    display: none;
+  }
+  .btn-primary-short-text {
+    display: inline;
   }
 }
