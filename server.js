@@ -1,24 +1,30 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const livereload = require("livereload");
-const connectLiveReload = require("connect-livereload");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 
-// Create a server and watch your public folder
-const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public'));
+console.log("ENV: " + process.env.NODE_ENV);
 
-// Use the middleware (put this before your routes)
-app.use(connectLiveReload());
+if (process.env.NODE_ENV === 'development') {
+  console.log("development")
+  const livereload = require("livereload");
+  const connectLiveReload = require("connect-livereload");
 
-// Signal a refresh when the server restarts (optional but helpful)
-liveReloadServer.server.once("connection", () => {
-  setTimeout(() => { liveReloadServer.refresh("/"); }, 100);
-});
+  // Create a server and watch your public folder
+  const liveReloadServer = livereload.createServer();
+  liveReloadServer.watch(path.join(__dirname, 'public'));
+
+  // Use the middleware (put this before your routes)
+  app.use(connectLiveReload());
+
+  // Signal a refresh when the server restarts (optional but helpful)
+  liveReloadServer.server.once("connection", () => {
+    setTimeout(() => { liveReloadServer.refresh("/"); }, 100);
+  });
+}
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
