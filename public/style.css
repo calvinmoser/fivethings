@@ -186,8 +186,20 @@ body {
 }
 
 #curtainSvg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Valance is a fixed-height bar that never scales with the viewport */
+#valanceSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7rem;
+  z-index: 1;
 }
 
 /* Left panel accordions toward the left edge */
