@@ -309,8 +309,7 @@ body.theme-neon header h1 {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: fit-content;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .controls {
@@ -631,11 +630,10 @@ footer .version {
 /* ---- Responsive ---- */
 @media (max-width: 540px) {
   .controls {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
   }
-  .btn-primary {
-    align-self: stretch;
+  .controls .btn-primary {
+    grid-column: 1 / -1;
     text-align: center;
   }
   .activity-card {
