@@ -6,6 +6,6 @@ services:
     volumes:
       - ./data:/data
     environment:
-      - PORT=3000
+      - PORT=80
       - DATA_DIR=/data
     restart: unless-stopped
