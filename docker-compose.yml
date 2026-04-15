@@ -1,6 +1,15 @@
+## Extract version and name using jq
+#export IMAGE_VERSION=$(jq -r .version ./app/package.json)
+#export IMAGE_NAME=$(jq -r .name ./app/package.json)
+#
+## Run Docker Compose
+#docker compose up --build
+
 services:
   fivethings:
+    container_name: fivethings
     build: .
+    image: "${IMAGE_NAME}:${IMAGE_VERSION}"
     ports:
       - "55560:80"
     volumes:
