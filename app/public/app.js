@@ -9,7 +9,7 @@ const CONFIG = {
   maxDropdown: 20,
   subPhrase: 'Replace [item1] with [item2]',
   curtainOpenDuration: 5000,   // ms
-  version: '0.0.1-beta'
+  version: 'v0.0.0-beta'
 };
 
 // ---- State ----
@@ -64,6 +64,7 @@ const modalMsg = document.getElementById('flagModalMessage');
 const flagConfirmBtn = document.getElementById('flagConfirm');
 const flagCancelBtn = document.getElementById('flagCancel');
 const footerYear = document.getElementById('footerYear');
+const version = document.getElementById('version');
 
 // ---- Init ----
 footerYear.textContent = new Date().getFullYear();
@@ -336,8 +337,16 @@ getBtn.addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') loadActivities();
 });
 
+async function fetchVersion() {
+  const res = await fetch(`/api/version`);
+  if (!res.ok) throw new Error(`Failed to load version`);
+  const data = await res.json();
+  return CONFIG.version.replace('0.0.0', data.version);
+}
+
 // ---- Boot ----
 window.addEventListener('DOMContentLoaded', async () => {
   startCurtain();
   await loadActivities();
+  version.textContent = await fetchVersion();
 });

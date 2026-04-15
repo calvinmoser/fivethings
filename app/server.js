@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const pkg = require("./package.json");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -118,6 +119,11 @@ app.post('/api/flag', (req, res) => {
 });
 
 app.get('/health', (req, res) => res.json({ ok: true }));
+
+app.get('/api/version', (req, res) => {
+  res.json({"version": pkg.version})
+});
+
 
 app.listen(PORT, () => {
   console.log(`Five Things running on port ${PORT}`);
