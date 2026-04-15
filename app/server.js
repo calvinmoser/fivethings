@@ -6,8 +6,13 @@ const pkg = require("./package.json");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
-
-console.log("ENV: " + process.env.NODE_ENV);
+const TIME_FORMAT = {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+};
 
 if (process.env.NODE_ENV === 'development') {
   console.log("development")
@@ -30,9 +35,11 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
+app.get('/api/activities/:difficulty', (req, res, next) => {
   const logPath = path.join(DATA_DIR, 'access.log');
-  const message = `${new Date().toISOString()} - ${req.method} ${req.url} - IP: ${req.ip}`;
+  const timestamp = new Date().toLocaleString([], TIME_FORMAT);
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const message = `${timestamp} - ${req.method} ${req.url} - IP: ${ip}`;
     console.log(message);
     fs.appendFile(logPath, message + '\n', (err) => {
       if (err) console.log("Error writing to " + logPath);
