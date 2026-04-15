@@ -2,14 +2,14 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY app/package*.json ./
 RUN npm ci --omit=dev
 
-COPY . .
+COPY ./app .
 
 ENV PORT=3000
 ENV DATA_DIR=/data
 
-EXPOSE 3000
+EXPOSE ${PORT}
 
 CMD ["node", "server.js"]
