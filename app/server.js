@@ -5,7 +5,7 @@ const pkg = require("./package.json");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../data');
 const TIME_FORMAT = {
   timeZone: 'America/New_York',
   year: 'numeric',
