@@ -39,14 +39,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/activities/:difficulty', (req, res, next) => {
   const logPath = path.join(DATA_DIR, 'access.log');
   const timestamp = new Date().toLocaleString([], TIME_FORMAT);
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const ip = req.headers['x-forwarded-for'] + ' ' + req.socket.remoteAddress;
   const message = `${timestamp} - ${req.method} ${req.url} - IP: ${ip}`;
     console.log(message);
     fs.appendFile(logPath, message + '\n', (err) => {
       if (err) console.log("Error writing to " + logPath);
     });
+  if (!req.headers['x-forward-for']) logHeaders(req.headers);
     next(); // Pass control to the next handler
 });
+
+function logHeaders(headers) {
+  const logPath = path.join(DATA_DIR, 'debug.log');
+  const timestamp = new Date().toLocaleString([], TIME_FORMAT);
+  const message = `${timestamp} ${JSON.stringify(headers, null, 2)}`;
+  fs.appendFile(logPath, message + '\n', (err) => {
+    if (err) console.log("Error writing to " + logPath);
+  });
+}
 
 // Parse CSV rows, tracking line numbers (1-based, skipping header)
 function parseCSV(filePath) {
