@@ -69,7 +69,9 @@ function parseActivitiesCSV(filePath) {
     if (cols.length < 3) continue;
     activities.push({
       lineNumber: i + 1,
-      name: cols[0].trim(),
+      name:    cols[0].trim(),
+      with:    (cols[1] || '').trim().toLowerCase() === 'true',
+      against: (cols[2] || '').trim().toLowerCase() === 'true',
       easy1: (cols[3] || '').trim(),
       easy2: (cols[4] || '').trim(),
       med1:  (cols[5] || '').trim(),
@@ -82,6 +84,7 @@ function parseActivitiesCSV(filePath) {
 }
 
 const LOCATION_PCT = 20;
+const PERSON_PCT   = 20;
 
 let replacementsCache = null;
 let locationsCache = null;
@@ -114,6 +117,14 @@ function loadLocations() {
   return locationsCache;
 }
 
+let personsCache = null;
+
+function loadPersons() {
+  if (!personsCache)
+    personsCache = loadDiffCSV(path.join(DATA_DIR, 'persons.csv'), 0, 1);
+  return personsCache;
+}
+
 // Returns ordered list of non-empty item values, preferred difficulty first
 function orderedItems(activity, difficulty) {
   const order = {
@@ -132,42 +143,62 @@ function pickRandomEntry(pool, usedValues) {
   return src[Math.floor(Math.random() * src.length)];
 }
 
+function personVariant(activity) {
+  if (activity.with && activity.against) return Math.random() < 0.5 ? 'with' : 'against';
+  if (activity.with) return 'with';
+  return 'against';
+}
+
 function buildActivityPool(rawActivities, difficulty) {
   const key = difficulty.toUpperCase();
   const repPool = loadReplacements()[key] || loadReplacements().EASY;
-  const locPool = loadLocations()[key] || loadLocations().EASY;
+  const locPool = loadLocations()[key]    || loadLocations().EASY;
+  const perPool = loadPersons()[key]      || loadPersons().EASY;
 
-  const locationCount = Math.min(
-    Math.round(rawActivities.length * LOCATION_PCT / 100),
-    locPool.length
-  );
+  const count = rawActivities.length;
+  const locationCount = Math.min(Math.round(count * LOCATION_PCT / 100), locPool.length);
 
-  // Sample unique locations up front
-  const shuffledLocs = [...locPool].sort(() => Math.random() - 0.5).slice(0, locationCount);
+  // Shuffle all indices; first slice gets locations
+  const shuffled = rawActivities.map((_, i) => i).sort(() => Math.random() - 0.5);
+  const locSet   = new Set(shuffled.slice(0, locationCount));
 
-  // Randomly pick which activities get a location
-  const shuffledIdx = rawActivities.map((_, i) => i).sort(() => Math.random() - 0.5);
-  const locSet = new Set(shuffledIdx.slice(0, locationCount));
+  // From the remainder, pick person-eligible activities
+  const personEligible = shuffled
+    .slice(locationCount)
+    .filter(i => rawActivities[i].with || rawActivities[i].against);
+  const personCount = Math.min(Math.round(count * PERSON_PCT / 100), personEligible.length, perPool.length);
+  const perSet = new Set(personEligible.slice(0, personCount));
 
-  let locIdx = 0;
+  // Pre-sample unique locations and persons
+  const sampledLocs = [...locPool].sort(() => Math.random() - 0.5).slice(0, locationCount);
+  const sampledPers = [...perPool].sort(() => Math.random() - 0.5).slice(0, personCount);
+
+  let locIdx = 0, perIdx = 0;
+
   return rawActivities.map((activity, idx) => {
     const items = orderedItems(activity, difficulty);
     const item1 = items[0] || 'item';
     const item2 = items[1] || items[0] || 'item';
     const usedReps = new Set();
 
-    if (locSet.has(idx)) {
-      const locEntry = shuffledLocs[locIdx++];
-      const locSlot = Math.random() < 0.5 ? 's1' : 's2';
+    function modPair(modSub) {
       const repEntry = pickRandomEntry(repPool, usedReps);
-      const locSub  = { type: 'location', value: locEntry.value, line: locEntry.line };
-      const itemSub = { type: 'item', item: locSlot === 's1' ? item2 : item1,
+      const modFirst = Math.random() < 0.5;
+      const itemSub = { type: 'item', item: modFirst ? item2 : item1,
                         replacement: repEntry.value, replacementLine: repEntry.line };
-      return {
-        lineNumber: activity.lineNumber, name: activity.name,
-        s1: locSlot === 's1' ? locSub : itemSub,
-        s2: locSlot === 's1' ? itemSub : locSub
-      };
+      return { s1: modFirst ? modSub : itemSub, s2: modFirst ? itemSub : modSub };
+    }
+
+    if (locSet.has(idx)) {
+      const e = sampledLocs[locIdx++];
+      const { s1, s2 } = modPair({ type: 'location', value: e.value, line: e.line });
+      return { lineNumber: activity.lineNumber, name: activity.name, s1, s2 };
+    }
+
+    if (perSet.has(idx)) {
+      const e = sampledPers[perIdx++];
+      const { s1, s2 } = modPair({ type: 'person', value: e.value, line: e.line, variant: personVariant(activity) });
+      return { lineNumber: activity.lineNumber, name: activity.name, s1, s2 };
     }
 
     const rep1 = pickRandomEntry(repPool, usedReps);
@@ -234,6 +265,9 @@ app.post('/api/flag', (req, res) => {
   } else if (type === 'location') {
     const { locationLine, location } = req.body;
     logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" location[${locationLine}]="${location}"\n`;
+  } else if (type === 'person') {
+    const { personLine, person } = req.body;
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" person[${personLine}]="${person}"\n`;
   } else {
     return res.status(400).json({ error: 'Invalid flag type' });
   }

@@ -9,6 +9,7 @@ const CONFIG = {
   maxDropdown: 20,
   subPhrase: 'Replace [item1] with [item2]',
   locationPhrase: 'Location: [location]',
+  personPhrases: { with: 'With: [person]', against: 'Against: [person]' },
   curtainOpenDuration: 5000,   // ms
   version: 'v0.0.0-beta'
 };
@@ -186,6 +187,9 @@ function renderActivity(actObj, difficulty) {
     if (sub.type === 'location') {
       div.innerHTML = CONFIG.locationPhrase.replace('[location]',
         `<span class="item-name">${escapeHtml(sub.value)}</span>`);
+    } else if (sub.type === 'person') {
+      div.innerHTML = (CONFIG.personPhrases[sub.variant] || CONFIG.personPhrases.with)
+        .replace('[person]', `<span class="item-name">${escapeHtml(sub.value)}</span>`);
     } else {
       div.innerHTML = subText(sub.item, sub.replacement);
     }
@@ -201,6 +205,7 @@ function makeFlagBtn(difficulty, actObj, sub) {
   btn.className = 'btn-flag-row';
   const label = sub === 'name' ? actObj.name
     : sub.type === 'location' ? `location: ${sub.value}`
+    : sub.type === 'person'   ? `person: ${sub.value}`
     : `${sub.item} → ${sub.replacement}`;
   btn.setAttribute('aria-label', `Flag for review: ${label}`);
   btn.title = 'Flag this for review';
@@ -287,7 +292,9 @@ function openFlagModal(difficulty, actObj, sub) {
     ? `activity "${actObj.name}"`
     : sub.type === 'location'
       ? `location "${sub.value}" on "${actObj.name}"`
-      : `substitution "${sub.item}" → "${sub.replacement}" on "${actObj.name}"`;
+      : sub.type === 'person'
+        ? `person "${sub.value}" on "${actObj.name}"`
+        : `substitution "${sub.item}" → "${sub.replacement}" on "${actObj.name}"`;
 
   modalMsg.textContent = `Flag ${target} for review?`;
   pendingFlag = { difficulty, actObj, sub };
@@ -310,6 +317,9 @@ flagConfirmBtn.addEventListener('click', async () => {
   } else if (sub.type === 'location') {
     body = { type: 'location', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
              locationLine: sub.line, location: sub.value };
+  } else if (sub.type === 'person') {
+    body = { type: 'person', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
+             personLine: sub.line, person: sub.value };
   } else {
     body = { type: 'item', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
              item: sub.item, replacementLine: sub.replacementLine, replacement: sub.replacement };
