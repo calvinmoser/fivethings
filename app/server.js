@@ -138,8 +138,15 @@ function orderedItems(activity, difficulty) {
   return cols.map(k => activity[k]).filter(v => v && v.length > 0);
 }
 
-function pickRandomEntry(pool, usedValues) {
+function pickRandomEntry(pool, usedValues, label) {
+  if (pool.length === 0) {
+    console.log(`[Five Things] ${label || 'Pool'} is empty`);
+    return { value: '?', line: 0 };
+  }
   const available = pool.filter(e => !usedValues.has(e.value));
+  if (available.length === 0) {
+    console.log(`[Five Things] ${label || 'Pool'} exhausted — resetting and reusing`);
+  }
   const src = available.length > 0 ? available : pool;
   return src[Math.floor(Math.random() * src.length)];
 }
@@ -152,12 +159,17 @@ function personVariant(activity) {
 
 function buildActivityPool(rawActivities, difficulty) {
   const key = difficulty.toUpperCase();
-  const repPool = loadReplacements()[key] || loadReplacements().EASY;
-  const locPool = loadLocations()[key]    || loadLocations().EASY;
-  const perPool = loadPersons()[key]      || loadPersons().EASY;
+  const reps = loadReplacements();
+  const locs = loadLocations();
+  const pers = loadPersons();
+  const repPool = reps[key]?.length ? reps[key] : (console.log(`[Five Things] Replacements empty for ${key}, falling back to EASY`), reps.EASY);
+  const locPool = locs[key]?.length ? locs[key] : (console.log(`[Five Things] Locations empty for ${key}, falling back to EASY`),  locs.EASY);
+  const perPool = pers[key]?.length ? pers[key] : (console.log(`[Five Things] Persons empty for ${key}, falling back to EASY`),    pers.EASY);
 
   const count = rawActivities.length;
-  const locationCount = Math.min(Math.round(count * LOCATION_PCT / 100), locPool.length);
+  const locTarget = Math.round(count * LOCATION_PCT / 100);
+  const locationCount = Math.min(locTarget, locPool.length);
+  if (locationCount < locTarget) console.log(`[Five Things] Locations exhausted for ${difficulty} (need ${locTarget}, have ${locPool.length}) — using all available`);
 
   // Shuffle all indices; first slice gets locations
   const shuffled = rawActivities.map((_, i) => i).sort(() => Math.random() - 0.5);
@@ -167,7 +179,9 @@ function buildActivityPool(rawActivities, difficulty) {
   const personEligible = shuffled
     .slice(locationCount)
     .filter(i => rawActivities[i].with || rawActivities[i].against);
-  const personCount = Math.min(Math.round(count * PERSON_PCT / 100), personEligible.length, perPool.length);
+  const perTarget = Math.round(count * PERSON_PCT / 100);
+  const personCount = Math.min(perTarget, personEligible.length, perPool.length);
+  if (personCount < perTarget) console.log(`[Five Things] Persons exhausted for ${difficulty} (need ${perTarget}, have ${Math.min(personEligible.length, perPool.length)}) — using all available`);
   const perSet = new Set(personEligible.slice(0, personCount));
 
   // Pre-sample unique locations and persons
@@ -232,11 +246,15 @@ function buildRandomPool() {
   });
 
   const count = combined.length;
-  const locationCount = Math.min(Math.round(count * LOCATION_PCT / 100), locAll.length);
+  const locRandTarget = Math.round(count * LOCATION_PCT / 100);
+  const locationCount = Math.min(locRandTarget, locAll.length);
+  if (locationCount < locRandTarget) console.log(`[Five Things] Locations exhausted for Random (need ${locRandTarget}, have ${locAll.length}) — using all available`);
   const shuffled = combined.map((_, i) => i).sort(() => Math.random() - 0.5);
   const locSet   = new Set(shuffled.slice(0, locationCount));
   const personEligible = shuffled.slice(locationCount).filter(i => combined[i].with || combined[i].against);
-  const personCount = Math.min(Math.round(count * PERSON_PCT / 100), personEligible.length, perAll.length);
+  const perRandTarget = Math.round(count * PERSON_PCT / 100);
+  const personCount = Math.min(perRandTarget, personEligible.length, perAll.length);
+  if (personCount < perRandTarget) console.log(`[Five Things] Persons exhausted for Random (need ${perRandTarget}, have ${Math.min(personEligible.length, perAll.length)}) — using all available`);
   const perSet = new Set(personEligible.slice(0, personCount));
 
   const sampledLocs = [...locAll].sort(() => Math.random() - 0.5).slice(0, locationCount);

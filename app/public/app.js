@@ -239,8 +239,24 @@ async function refreshActivity(card, difficulty) {
   );
 
   if (candidates.length === 0) {
-    card.style.opacity = '0.5';
-    card.title = 'No more unused activities available';
+    console.log(`[Five Things] Refresh pool exhausted for ${difficulty} — resetting session and starting over`);
+    sessionHistory.delete(difficulty);
+    saveHistory();
+    activityPool = await fetchPool(difficulty);
+    const otherDisplayed2 = new Set(displayedLines);
+    otherDisplayed2.delete(oldLine);
+    const retried = activityPool.filter(a =>
+      !isUsed(difficulty, a.lineNumber) && !otherDisplayed2.has(a.lineNumber)
+    );
+    if (retried.length === 0) return;
+    const replacement2 = retried[Math.floor(Math.random() * retried.length)];
+    displayedLines.delete(oldLine);
+    displayedLines.add(replacement2.lineNumber);
+    markUsed(difficulty, replacement2.lineNumber);
+    const newCard2 = renderActivity(replacement2, difficulty);
+    newCard2.style.opacity = '0';
+    card.replaceWith(newCard2);
+    requestAnimationFrame(() => { newCard2.style.transition = 'opacity 0.25s'; newCard2.style.opacity = '1'; });
     return;
   }
 
@@ -271,11 +287,14 @@ async function loadActivities() {
       currentDifficulty = difficulty;
     }
 
-    const picked = pickRandom(activityPool, difficulty, count, new Set());
+    let picked = pickRandom(activityPool, difficulty, count, new Set());
 
     if (picked.length === 0) {
-      area.innerHTML = '<p class="state-message">No more unused activities for this difficulty in this session.</p>';
-      return;
+      console.log(`[Five Things] Activities exhausted for ${difficulty} — resetting session and starting over`);
+      sessionHistory.delete(difficulty);
+      saveHistory();
+      activityPool = await fetchPool(difficulty);
+      picked = pickRandom(activityPool, difficulty, count, new Set());
     }
 
     displayActivities(picked, difficulty);
