@@ -1,2 +1,5 @@
-Activity Name,S1 Item1,S1 Sub1,S1 Item2,S1 Sub2,S1 Item3,S1 Sub3,S1 Item4,S1 Sub4,S1 Item5,S1 Sub5,S2 Item1,S2 Sub1,S2 Item2,S2 Sub2,S2 Item3,S2 Sub3,S2 Item4,S2 Sub4,S2 Item5,S2 Sub5,S3 Item1,S3 Sub1,S3 Item2,S3 Sub2,S3 Item3,S3 Sub3,S3 Item4,S3 Sub4,S3 Item5,S3 Sub5,S4 Item1,S4 Sub1,S4 Item2,S4 Sub2,S4 Item3,S4 Sub3,S4 Item4,S4 Sub4,S4 Item5,S4 Sub5,S5 Item1,S5 Sub1,S5 Item2,S5 Sub2,S5 Item3,S5 Sub3,S5 Item4,S5 Sub4,S5 Item5,S5 Sub5
-Brushing Teeth,Toothbrush,Drumstick (chicken),Toothpaste,Shot Put,Cup of Water,Kaleidoscope,Dental Floss,Microscope Slide,Mirror,Tin Snips,Toothbrush,Springform Pan,Toothpaste,Cowl,Cup of Water,Didgeridoo,Dental Floss,Centrifuge,Mirror,Chaise Longue,Toothbrush,Cauldron,Toothpaste,Banjo,Cup of Water,Jack-in-the-Box,Dental Floss,Hourglass,Mirror,TV Remote,Toothbrush,Wasp Nest,Toothpaste,Gummy Worm,Cup of Water,Clam Shell,Dental Floss,Pogo Stick,Mirror,Rickshaw,Toothbrush,Fire Poker,Toothpaste,Pumice Stone,Cup of Water,Angle Grinder,Dental Floss,Ascot,Mirror,Parallel Bar
+Name,With,Against,Easy1,Easy2,Med1,Med2,Hard1,Hard2
+Playing Catch,true,false,ball,glove,baseball,baseball cap,,
+Washing Dishes,false,false,sponge,dish soap,rubber gloves,scrub brush,,
+Jumping Rope,true,false,jump rope,sneakers,timer,gym clothes,,
+Brushing Teeth,false,false,toothbrush,toothpaste,cup,dental floss,,

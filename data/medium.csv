@@ -1,2 +1,5 @@
-Activity Name,S1 Item1,S1 Sub1,S1 Item2,S1 Sub2,S1 Item3,S1 Sub3,S1 Item4,S1 Sub4,S1 Item5,S1 Sub5,S2 Item1,S2 Sub1,S2 Item2,S2 Sub2,S2 Item3,S2 Sub3,S2 Item4,S2 Sub4,S2 Item5,S2 Sub5,S3 Item1,S3 Sub1,S3 Item2,S3 Sub2,S3 Item3,S3 Sub3,S3 Item4,S3 Sub4,S3 Item5,S3 Sub5,S4 Item1,S4 Sub1,S4 Item2,S4 Sub2,S4 Item3,S4 Sub3,S4 Item4,S4 Sub4,S4 Item5,S4 Sub5,S5 Item1,S5 Sub1,S5 Item2,S5 Sub2,S5 Item3,S5 Sub3,S5 Item4,S5 Sub4,S5 Item5,S5 Sub5
-Baking a Cake,Mixing Bowl,Pogo Stick,Batter,Snorkel Mask,Spatula,Amphora,Oven Mitts,Paperweight,Cake Pan,Microscope Slide,Mixing Bowl,Cloak,Batter,Fire Poker,Spatula,Bellhop Cart,Oven Mitts,Butter Dish,Cake Pan,Sedan Chair,Mixing Bowl,Kaleidoscope,Batter,Sumo Belt,Spatula,Dried Corn Husk,Oven Mitts,Whole Salmon,Cake Pan,Vuvuzela,Mixing Bowl,Kayak,Batter,Kazoo,Spatula,Gravy Boat,Oven Mitts,Mannequin,Cake Pan,Wheel of Cheese,Mixing Bowl,Lederhosen,Batter,Corndog,Spatula,Marionette,Oven Mitts,Sea Urchin,Cake Pan,Melon Baller
+Name,With,Against,Easy1,Easy2,Med1,Med2,Hard1,Hard2
+Doing a High Jump,false,true,sneakers,athletic shorts,high jump bar,landing mat,,
+Flambeeing a Dish,false,false,pan,lighter,cognac bottle,ladle,chafing dish,
+Long Jumping,false,true,sneakers,sand pit,measuring tape,athletic shorts,,
+Shot Put,false,true,shot put,athletic shorts,throwing circle,gloves,,
