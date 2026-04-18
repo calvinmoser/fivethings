@@ -8,6 +8,7 @@ const CONFIG = {
   defaultDifficulty: 'Easy',
   maxDropdown: 20,
   subPhrase: 'Replace [item1] with [item2]',
+  locationPhrase: 'Location: [location]',
   curtainOpenDuration: 5000,   // ms
   version: 'v0.0.0-beta'
 };
@@ -161,7 +162,6 @@ function renderActivity(actObj, difficulty) {
   card.className = 'activity-card';
   card.dataset.lineNumber = actObj.lineNumber;
 
-  // Activity header: name + refresh button side by side
   const header = document.createElement('div');
   header.className = 'activity-header';
 
@@ -175,38 +175,37 @@ function renderActivity(actObj, difficulty) {
   refreshBtn.textContent = '↻';
   refreshBtn.addEventListener('click', () => refreshActivity(card, difficulty));
   header.appendChild(refreshBtn);
-
   header.appendChild(nameDiv);
-
   card.appendChild(header);
 
-  // Flag for activity name
-  card.appendChild(makeFlagBtn(difficulty, actObj, 'name', actObj.name));
+  card.appendChild(makeFlagBtn(difficulty, actObj, 'name'));
 
-  // S1
-  const s1Div = document.createElement('div');
-  s1Div.className = 'sub-text';
-  s1Div.innerHTML = subText(actObj.s1item1, actObj.s1item2);
-  card.appendChild(s1Div);
-  card.appendChild(makeFlagBtn(difficulty, actObj, 's1', actObj.s1item1, actObj.s1item2));
-
-  // S2
-  const s2Div = document.createElement('div');
-  s2Div.className = 'sub-text';
-  s2Div.innerHTML = subText(actObj.s2item1, actObj.s2item2);
-  card.appendChild(s2Div);
-  card.appendChild(makeFlagBtn(difficulty, actObj, 's2', actObj.s2item1, actObj.s2item2));
+  [actObj.s1, actObj.s2].forEach(sub => {
+    const div = document.createElement('div');
+    div.className = 'sub-text';
+    if (sub.type === 'location') {
+      div.innerHTML = CONFIG.locationPhrase.replace('[location]',
+        `<span class="item-name">${escapeHtml(sub.value)}</span>`);
+    } else {
+      div.innerHTML = subText(sub.item, sub.replacement);
+    }
+    card.appendChild(div);
+    card.appendChild(makeFlagBtn(difficulty, actObj, sub));
+  });
 
   return card;
 }
 
-function makeFlagBtn(difficulty, actObj, rowType, item1, item2) {
+function makeFlagBtn(difficulty, actObj, sub) {
   const btn = document.createElement('button');
   btn.className = 'btn-flag-row';
-  btn.setAttribute('aria-label', `Flag for review: ${item1}${item2 ? ' → ' + item2 : ''}`);
+  const label = sub === 'name' ? actObj.name
+    : sub.type === 'location' ? `location: ${sub.value}`
+    : `${sub.item} → ${sub.replacement}`;
+  btn.setAttribute('aria-label', `Flag for review: ${label}`);
   btn.title = 'Flag this for review';
   btn.textContent = '⚑';
-  btn.addEventListener('click', () => openFlagModal(difficulty, actObj, rowType, item1, item2));
+  btn.addEventListener('click', () => openFlagModal(difficulty, actObj, sub));
   return btn;
 }
 
@@ -283,13 +282,15 @@ async function loadActivities() {
 // ---- Flag modal ----
 let pendingFlag = null;
 
-function openFlagModal(difficulty, actObj, rowType, item1, item2) {
-  const target = rowType === 'name'
+function openFlagModal(difficulty, actObj, sub) {
+  const target = sub === 'name'
     ? `activity "${actObj.name}"`
-    : `substitution "${item1}" → "${item2}" on "${actObj.name}"`;
+    : sub.type === 'location'
+      ? `location "${sub.value}" on "${actObj.name}"`
+      : `substitution "${sub.item}" → "${sub.replacement}" on "${actObj.name}"`;
 
   modalMsg.textContent = `Flag ${target} for review?`;
-  pendingFlag = { difficulty, lineNumber: actObj.lineNumber, activityName: actObj.name, item1, item2: item2 || null, rowType };
+  pendingFlag = { difficulty, actObj, sub };
   modal.hidden = false;
   flagConfirmBtn.focus();
 }
@@ -301,23 +302,25 @@ function closeFlagModal() {
 
 flagConfirmBtn.addEventListener('click', async () => {
   if (!pendingFlag) return;
-  const { difficulty, lineNumber, activityName, item1, item2, rowType } = pendingFlag;
+  const { difficulty, actObj, sub } = pendingFlag;
   closeFlagModal();
+  let body;
+  if (sub === 'name') {
+    body = { type: 'name', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name };
+  } else if (sub.type === 'location') {
+    body = { type: 'location', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
+             locationLine: sub.line, location: sub.value };
+  } else {
+    body = { type: 'item', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
+             item: sub.item, replacementLine: sub.replacementLine, replacement: sub.replacement };
+  }
   try {
     await fetch('/api/flag', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        difficulty,
-        lineNumber,
-        activityName,
-        item1: rowType !== 'name' ? item1 : undefined,
-        item2: rowType !== 'name' ? item2 : undefined
-      })
+      body: JSON.stringify(body)
     });
-  } catch (_) {
-    // best-effort
-  }
+  } catch (_) {}
 });
 
 flagCancelBtn.addEventListener('click', closeFlagModal);

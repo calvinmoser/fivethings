@@ -81,11 +81,12 @@ function parseActivitiesCSV(filePath) {
   return activities;
 }
 
-let replacementsCache = null;
+const LOCATION_PCT = 20;
 
-function loadReplacements() {
-  if (replacementsCache) return replacementsCache;
-  const filePath = path.join(DATA_DIR, 'replacements.csv');
+let replacementsCache = null;
+let locationsCache = null;
+
+function loadDiffCSV(filePath, valueCol, diffCol) {
   const content = fs.readFileSync(filePath, 'utf8');
   const lines = content.split('\n');
   const byDiff = { EASY: [], MEDIUM: [], HARD: [] };
@@ -93,13 +94,24 @@ function loadReplacements() {
     const line = lines[i].trim();
     if (!line) continue;
     const cols = parseCSVLine(line);
-    if (cols.length < 2) continue;
-    const rep = cols[0].trim();
-    const diff = cols[1].trim().toUpperCase();
-    if (byDiff[diff]) byDiff[diff].push(rep);
+    if (cols.length <= Math.max(valueCol, diffCol)) continue;
+    const value = cols[valueCol].trim();
+    const diff = cols[diffCol].trim().toUpperCase();
+    if (byDiff[diff]) byDiff[diff].push({ value, line: i + 1 });
   }
-  replacementsCache = byDiff;
+  return byDiff;
+}
+
+function loadReplacements() {
+  if (!replacementsCache)
+    replacementsCache = loadDiffCSV(path.join(DATA_DIR, 'replacements.csv'), 0, 1);
   return replacementsCache;
+}
+
+function loadLocations() {
+  if (!locationsCache)
+    locationsCache = loadDiffCSV(path.join(DATA_DIR, 'locations.csv'), 0, 1);
+  return locationsCache;
 }
 
 // Returns ordered list of non-empty item values, preferred difficulty first
@@ -114,34 +126,59 @@ function orderedItems(activity, difficulty) {
     .filter(v => v && v.length > 0);
 }
 
-function pickRandom(arr, exclude) {
-  const pool = arr.filter(v => !exclude.has(v));
-  const src = pool.length > 0 ? pool : arr;
+function pickRandomEntry(pool, usedValues) {
+  const available = pool.filter(e => !usedValues.has(e.value));
+  const src = available.length > 0 ? available : pool;
   return src[Math.floor(Math.random() * src.length)];
 }
 
-function attachSubstitutions(activity, difficulty) {
-  const repKey = difficulty.toUpperCase();
-  const replacements = loadReplacements();
-  const repPool = replacements[repKey] || replacements.EASY;
+function buildActivityPool(rawActivities, difficulty) {
+  const key = difficulty.toUpperCase();
+  const repPool = loadReplacements()[key] || loadReplacements().EASY;
+  const locPool = loadLocations()[key] || loadLocations().EASY;
 
-  const items = orderedItems(activity, difficulty);
-  const item1 = items[0] || 'item';
-  const item2 = items[1] || items[0] || 'item';
+  const locationCount = Math.min(
+    Math.round(rawActivities.length * LOCATION_PCT / 100),
+    locPool.length
+  );
 
-  const usedReps = new Set();
-  const rep1 = pickRandom(repPool, usedReps);
-  usedReps.add(rep1);
-  const rep2 = pickRandom(repPool, usedReps);
+  // Sample unique locations up front
+  const shuffledLocs = [...locPool].sort(() => Math.random() - 0.5).slice(0, locationCount);
 
-  return {
-    lineNumber: activity.lineNumber,
-    name: activity.name,
-    s1item1: item1,
-    s1item2: rep1,
-    s2item1: item2,
-    s2item2: rep2
-  };
+  // Randomly pick which activities get a location
+  const shuffledIdx = rawActivities.map((_, i) => i).sort(() => Math.random() - 0.5);
+  const locSet = new Set(shuffledIdx.slice(0, locationCount));
+
+  let locIdx = 0;
+  return rawActivities.map((activity, idx) => {
+    const items = orderedItems(activity, difficulty);
+    const item1 = items[0] || 'item';
+    const item2 = items[1] || items[0] || 'item';
+    const usedReps = new Set();
+
+    if (locSet.has(idx)) {
+      const locEntry = shuffledLocs[locIdx++];
+      const locSlot = Math.random() < 0.5 ? 's1' : 's2';
+      const repEntry = pickRandomEntry(repPool, usedReps);
+      const locSub  = { type: 'location', value: locEntry.value, line: locEntry.line };
+      const itemSub = { type: 'item', item: locSlot === 's1' ? item2 : item1,
+                        replacement: repEntry.value, replacementLine: repEntry.line };
+      return {
+        lineNumber: activity.lineNumber, name: activity.name,
+        s1: locSlot === 's1' ? locSub : itemSub,
+        s2: locSlot === 's1' ? itemSub : locSub
+      };
+    }
+
+    const rep1 = pickRandomEntry(repPool, usedReps);
+    usedReps.add(rep1.value);
+    const rep2 = pickRandomEntry(repPool, usedReps);
+    return {
+      lineNumber: activity.lineNumber, name: activity.name,
+      s1: { type: 'item', item: item1, replacement: rep1.value, replacementLine: rep1.line },
+      s2: { type: 'item', item: item2, replacement: rep2.value, replacementLine: rep2.line }
+    };
+  });
 }
 
 function parseCSVLine(line) {
@@ -175,7 +212,7 @@ app.get('/api/activities/:difficulty', (req, res) => {
   }
   try {
     const raw = parseActivitiesCSV(filePath);
-    const activities = raw.map(a => attachSubstitutions(a, difficulty));
+    const activities = buildActivityPool(raw, difficulty);
     res.json(activities);
   } catch (err) {
     res.status(500).json({ error: 'Failed to read activities file' });
@@ -183,13 +220,23 @@ app.get('/api/activities/:difficulty', (req, res) => {
 });
 
 app.post('/api/flag', (req, res) => {
-  const { difficulty, lineNumber, activityName, item1, item2 } = req.body;
-  if (!difficulty || !lineNumber || !activityName) {
+  const { type, difficulty, activityLine, activityName } = req.body;
+  if (!type || !difficulty || !activityLine || !activityName) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
-  const timestamp = new Date().toISOString();
-  const substitution = (item1 && item2) ? `, substitution=${item1}, ${item2}` : '';
-  const logLine = `[${timestamp}] difficulty=${difficulty} line=${lineNumber} activity=${activityName}${substitution}\n`;
+  const ts = new Date().toISOString();
+  let logLine;
+  if (type === 'name') {
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" flagged=name\n`;
+  } else if (type === 'item') {
+    const { item, replacementLine, replacement } = req.body;
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" item="${item}" replacement[${replacementLine}]="${replacement}"\n`;
+  } else if (type === 'location') {
+    const { locationLine, location } = req.body;
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" location[${locationLine}]="${location}"\n`;
+  } else {
+    return res.status(400).json({ error: 'Invalid flag type' });
+  }
   const logPath = path.join(DATA_DIR, 'flagged.log');
   try {
     fs.appendFileSync(logPath, logLine, 'utf8');
