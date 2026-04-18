@@ -132,9 +132,10 @@ function orderedItems(activity, difficulty) {
     Medium: ['med1','med2','easy1','easy2','hard1','hard2'],
     Hard:   ['hard1','hard2','med1','med2','easy1','easy2']
   };
-  return (order[difficulty] || order.Easy)
-    .map(k => activity[k])
-    .filter(v => v && v.length > 0);
+  const cols = difficulty === 'Random'
+    ? ['easy1','easy2','med1','med2','hard1','hard2'].sort(() => Math.random() - 0.5)
+    : (order[difficulty] || order.Easy);
+  return cols.map(k => activity[k]).filter(v => v && v.length > 0);
 }
 
 function pickRandomEntry(pool, usedValues) {
@@ -212,6 +213,74 @@ function buildActivityPool(rawActivities, difficulty) {
   });
 }
 
+const RANDOM_OFFSETS = { Easy: 0, Medium: 10000, Hard: 20000 };
+
+function buildRandomPool() {
+  const diffs = ['Easy', 'Medium', 'Hard'];
+  const repAll = Object.values(loadReplacements()).flat();
+  const locAll = Object.values(loadLocations()).flat();
+  const perAll = Object.values(loadPersons()).flat();
+
+  const combined = diffs.flatMap(diff => {
+    const filePath = path.join(DATA_DIR, `${diff.toLowerCase()}.csv`);
+    if (!fs.existsSync(filePath)) return [];
+    return parseActivitiesCSV(filePath).map(a => ({
+      ...a,
+      lineNumber: a.lineNumber + RANDOM_OFFSETS[diff],
+      sourceDifficulty: diff
+    }));
+  });
+
+  const count = combined.length;
+  const locationCount = Math.min(Math.round(count * LOCATION_PCT / 100), locAll.length);
+  const shuffled = combined.map((_, i) => i).sort(() => Math.random() - 0.5);
+  const locSet   = new Set(shuffled.slice(0, locationCount));
+  const personEligible = shuffled.slice(locationCount).filter(i => combined[i].with || combined[i].against);
+  const personCount = Math.min(Math.round(count * PERSON_PCT / 100), personEligible.length, perAll.length);
+  const perSet = new Set(personEligible.slice(0, personCount));
+
+  const sampledLocs = [...locAll].sort(() => Math.random() - 0.5).slice(0, locationCount);
+  const sampledPers = [...perAll].sort(() => Math.random() - 0.5).slice(0, personCount);
+
+  let locIdx = 0, perIdx = 0;
+
+  return combined.map((activity, idx) => {
+    const items = orderedItems(activity, 'Random');
+    const item1 = items[0] || 'item';
+    const item2 = items[1] || items[0] || 'item';
+    const usedReps = new Set();
+
+    function modPair(modSub) {
+      const repEntry = pickRandomEntry(repAll, usedReps);
+      const modFirst = Math.random() < 0.5;
+      const itemSub = { type: 'item', item: modFirst ? item2 : item1,
+                        replacement: repEntry.value, replacementLine: repEntry.line };
+      return { s1: modFirst ? modSub : itemSub, s2: modFirst ? itemSub : modSub };
+    }
+
+    const base = { lineNumber: activity.lineNumber, name: activity.name, sourceDifficulty: activity.sourceDifficulty };
+
+    if (locSet.has(idx)) {
+      const e = sampledLocs[locIdx++];
+      const { s1, s2 } = modPair({ type: 'location', value: e.value, line: e.line });
+      return { ...base, s1, s2 };
+    }
+    if (perSet.has(idx)) {
+      const e = sampledPers[perIdx++];
+      const { s1, s2 } = modPair({ type: 'person', value: e.value, line: e.line, variant: personVariant(activity) });
+      return { ...base, s1, s2 };
+    }
+    const rep1 = pickRandomEntry(repAll, usedReps);
+    usedReps.add(rep1.value);
+    const rep2 = pickRandomEntry(repAll, usedReps);
+    return {
+      ...base,
+      s1: { type: 'item', item: item1, replacement: rep1.value, replacementLine: rep1.line },
+      s2: { type: 'item', item: item2, replacement: rep2.value, replacementLine: rep2.line }
+    };
+  });
+}
+
 function parseCSVLine(line) {
   const result = [];
   let current = '';
@@ -233,18 +302,20 @@ function parseCSVLine(line) {
 
 app.get('/api/activities/:difficulty', (req, res) => {
   const { difficulty } = req.params;
-  const allowed = ['Easy', 'Medium', 'Hard'];
+  const allowed = ['Easy', 'Medium', 'Hard', 'Random'];
   if (!allowed.includes(difficulty)) {
     return res.status(400).json({ error: 'Invalid difficulty' });
   }
-  const filePath = path.join(DATA_DIR, `${difficulty.toLowerCase()}.csv`);
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).json({ error: `${difficulty}.csv not found` });
-  }
   try {
+    if (difficulty === 'Random') {
+      return res.json(buildRandomPool());
+    }
+    const filePath = path.join(DATA_DIR, `${difficulty.toLowerCase()}.csv`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: `${difficulty}.csv not found` });
+    }
     const raw = parseActivitiesCSV(filePath);
-    const activities = buildActivityPool(raw, difficulty);
-    res.json(activities);
+    res.json(buildActivityPool(raw, difficulty));
   } catch (err) {
     res.status(500).json({ error: 'Failed to read activities file' });
   }

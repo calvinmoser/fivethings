@@ -311,17 +311,18 @@ flagConfirmBtn.addEventListener('click', async () => {
   if (!pendingFlag) return;
   const { difficulty, actObj, sub } = pendingFlag;
   closeFlagModal();
+  const flagDifficulty = actObj.sourceDifficulty || difficulty;
   let body;
   if (sub === 'name') {
-    body = { type: 'name', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name };
+    body = { type: 'name', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name };
   } else if (sub.type === 'location') {
-    body = { type: 'location', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
+    body = { type: 'location', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
              locationLine: sub.line, location: sub.value };
   } else if (sub.type === 'person') {
-    body = { type: 'person', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
+    body = { type: 'person', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
              personLine: sub.line, person: sub.value };
   } else {
-    body = { type: 'item', difficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
+    body = { type: 'item', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
              item: sub.item, replacementLine: sub.replacementLine, replacement: sub.replacement };
   }
   try {
