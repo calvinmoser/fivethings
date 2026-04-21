@@ -388,6 +388,16 @@ app.post('/api/flag', (req, res) => {
   }
 });
 
+app.get('/api/billboard', (req, res) => {
+  try {
+    const content = fs.readFileSync(path.join(DATA_DIR, 'billboard.txt'), 'utf8');
+    const lines = content.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    res.json({ lines });
+  } catch (_) {
+    res.json({ lines: [] });
+  }
+});
+
 app.get('/health', (req, res) => res.json({ ok: true }));
 
 app.get('/api/version', (req, res) => {

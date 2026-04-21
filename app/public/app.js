@@ -380,9 +380,36 @@ async function fetchVersion() {
   return CONFIG.version.replace('0.0.0', data.version);
 }
 
+// ---- Billboard rotator ----
+const billboardEl = document.getElementById('billboard');
+const BILLBOARD_INTERVAL = 5000;
+
+async function startBillboard() {
+  let lines = [];
+  try {
+    const res = await fetch('/api/billboard');
+    if (res.ok) ({ lines } = await res.json());
+  } catch (_) {}
+  if (!lines.length) return;
+
+  let idx = 0;
+  function show() {
+    billboardEl.classList.remove('billboard-visible');
+    setTimeout(() => {
+      billboardEl.textContent = lines[idx];
+      billboardEl.classList.add('billboard-visible');
+      idx = (idx + 1) % lines.length;
+    }, 300);
+  }
+
+  show();
+  setInterval(show, BILLBOARD_INTERVAL);
+}
+
 // ---- Boot ----
 window.addEventListener('DOMContentLoaded', async () => {
   startCurtain();
   await loadActivities();
   version.textContent = await fetchVersion();
+  startBillboard();
 });

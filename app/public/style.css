@@ -648,6 +648,13 @@ footer {
 
 footer .disclaimer {
   font-style: italic;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  min-height: 1.2em;
+}
+
+footer .disclaimer.billboard-visible {
+  opacity: 1;
 }
 
 footer .version {

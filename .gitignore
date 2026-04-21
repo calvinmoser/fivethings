@@ -1,5 +1,6 @@
 node_modules/
-data/
+data/*.csv
+data/logs
 .env
 /.idea/
 /memory/
