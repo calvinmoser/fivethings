@@ -63,6 +63,7 @@ const getBtn = document.getElementById('getActivities');
 const area = document.getElementById('activitiesArea');
 const modal = document.getElementById('flagModal');
 const modalMsg = document.getElementById('flagModalMessage');
+const flagComment = document.getElementById('flagComment');
 const flagConfirmBtn = document.getElementById('flagConfirm');
 const flagCancelBtn = document.getElementById('flagCancel');
 const footerYear = document.getElementById('footerYear');
@@ -324,25 +325,27 @@ function openFlagModal(difficulty, actObj, sub) {
 function closeFlagModal() {
   modal.hidden = true;
   pendingFlag = null;
+  flagComment.value = '';
 }
 
 flagConfirmBtn.addEventListener('click', async () => {
   if (!pendingFlag) return;
   const { difficulty, actObj, sub } = pendingFlag;
+  const comment = flagComment.value.trim() || undefined;
   closeFlagModal();
   const flagDifficulty = actObj.sourceDifficulty || difficulty;
   let body;
   if (sub === 'name') {
-    body = { type: 'name', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name };
+    body = { type: 'name', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name, comment };
   } else if (sub.type === 'location') {
     body = { type: 'location', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
-             locationLine: sub.line, location: sub.value };
+             locationLine: sub.line, location: sub.value, comment };
   } else if (sub.type === 'person') {
     body = { type: 'person', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
-             personLine: sub.line, person: sub.value };
+             personLine: sub.line, person: sub.value, comment };
   } else {
     body = { type: 'item', difficulty: flagDifficulty, activityLine: actObj.lineNumber, activityName: actObj.name,
-             item: sub.item, replacementLine: sub.replacementLine, replacement: sub.replacement };
+             item: sub.item, replacementLine: sub.replacementLine, replacement: sub.replacement, comment };
   }
   try {
     await fetch('/api/flag', {

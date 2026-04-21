@@ -358,23 +358,24 @@ app.get('/api/activities/:difficulty', (req, res) => {
 });
 
 app.post('/api/flag', (req, res) => {
-  const { type, difficulty, activityLine, activityName } = req.body;
+  const { type, difficulty, activityLine, activityName, comment } = req.body;
   if (!type || !difficulty || !activityLine || !activityName) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
   const ts = new Date().toISOString();
+  const commentSuffix = comment ? ` comment="${comment.replace(/"/g, '\\"')}"` : '';
   let logLine;
   if (type === 'name') {
-    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" flagged=name\n`;
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" flagged=name${commentSuffix}\n`;
   } else if (type === 'item') {
     const { item, replacementLine, replacement } = req.body;
-    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" item="${item}" replacement[${replacementLine}]="${replacement}"\n`;
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" item="${item}" replacement[${replacementLine}]="${replacement}"${commentSuffix}\n`;
   } else if (type === 'location') {
     const { locationLine, location } = req.body;
-    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" location[${locationLine}]="${location}"\n`;
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" location[${locationLine}]="${location}"${commentSuffix}\n`;
   } else if (type === 'person') {
     const { personLine, person } = req.body;
-    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" person[${personLine}]="${person}"\n`;
+    logLine = `[${ts}] difficulty=${difficulty} activity[${activityLine}]="${activityName}" person[${personLine}]="${person}"${commentSuffix}\n`;
   } else {
     return res.status(400).json({ error: 'Invalid flag type' });
   }
