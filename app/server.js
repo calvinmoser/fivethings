@@ -6,6 +6,7 @@ const pkg = require("./package.json");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../data');
+const LOG_DIR = process.env.LOG_DIR || path.join(DATA_DIR, 'logs');
 const TIME_FORMAT = {
   timeZone: 'America/New_York',
   year: 'numeric',
@@ -37,7 +38,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/activities/:difficulty', (req, res, next) => {
-  const logPath = path.join(DATA_DIR, 'access.log');
+  const logPath = path.join(LOG_DIR, 'access.log');
   const timestamp = new Date().toLocaleString([], TIME_FORMAT);
   const ip = req.headers['x-forwarded-for'] + ' ' + req.socket.remoteAddress;
   const message = `${timestamp} - ${req.method} ${req.url} - IP: ${ip}`;
@@ -50,7 +51,7 @@ app.get('/api/activities/:difficulty', (req, res, next) => {
 });
 
 function logHeaders(headers) {
-  const logPath = path.join(DATA_DIR, 'debug.log');
+  const logPath = path.join(LOG_DIR, 'debug.log');
   const timestamp = new Date().toLocaleString([], TIME_FORMAT);
   const message = `${timestamp} ${JSON.stringify(headers, null, 2)}`;
   fs.appendFile(logPath, message + '\n', (err) => {
@@ -391,7 +392,6 @@ app.get('/health', (req, res) => res.json({ ok: true }));
 app.get('/api/version', (req, res) => {
   res.json({"version": pkg.version})
 });
-
 
 app.listen(PORT, () => {
   console.log(`Five Things running on port ${PORT}`);
