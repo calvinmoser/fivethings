@@ -175,9 +175,8 @@ function buildActivityPool(rawActivities, difficulty) {
   const shuffled = rawActivities.map((_, i) => i).sort(() => Math.random() - 0.5);
   const locSet   = new Set(shuffled.slice(0, locationCount));
 
-  // From the remainder, pick person-eligible activities
+  // Person-eligible activities can now include location-assigned ones
   const personEligible = shuffled
-    .slice(locationCount)
     .filter(i => rawActivities[i].with || rawActivities[i].against);
   const perTarget = Math.round(count * PERSON_PCT / 100);
   const personCount = Math.min(perTarget, personEligible.length, perPool.length);
@@ -202,6 +201,16 @@ function buildActivityPool(rawActivities, difficulty) {
       const itemSub = { type: 'item', item: modFirst ? item2 : item1,
                         replacement: repEntry.value, replacementLine: repEntry.line };
       return { s1: modFirst ? modSub : itemSub, s2: modFirst ? itemSub : modSub };
+    }
+
+    if (locSet.has(idx) && perSet.has(idx)) {
+      const locEntry = sampledLocs[locIdx++];
+      const perEntry = sampledPers[perIdx++];
+      const locSub = { type: 'location', value: locEntry.value, line: locEntry.line };
+      const perSub = { type: 'person', value: perEntry.value, line: perEntry.line, variant: personVariant(activity) };
+      const locFirst = Math.random() < 0.5;
+      return { lineNumber: activity.lineNumber, name: activity.name,
+               s1: locFirst ? locSub : perSub, s2: locFirst ? perSub : locSub };
     }
 
     if (locSet.has(idx)) {
@@ -251,7 +260,7 @@ function buildRandomPool() {
   if (locationCount < locRandTarget) console.log(`[Five Things] Locations exhausted for Random (need ${locRandTarget}, have ${locAll.length}) — using all available`);
   const shuffled = combined.map((_, i) => i).sort(() => Math.random() - 0.5);
   const locSet   = new Set(shuffled.slice(0, locationCount));
-  const personEligible = shuffled.slice(locationCount).filter(i => combined[i].with || combined[i].against);
+  const personEligible = shuffled.filter(i => combined[i].with || combined[i].against);
   const perRandTarget = Math.round(count * PERSON_PCT / 100);
   const personCount = Math.min(perRandTarget, personEligible.length, perAll.length);
   if (personCount < perRandTarget) console.log(`[Five Things] Persons exhausted for Random (need ${perRandTarget}, have ${Math.min(personEligible.length, perAll.length)}) — using all available`);
@@ -278,6 +287,14 @@ function buildRandomPool() {
 
     const base = { lineNumber: activity.lineNumber, name: activity.name, sourceDifficulty: activity.sourceDifficulty };
 
+    if (locSet.has(idx) && perSet.has(idx)) {
+      const locEntry = sampledLocs[locIdx++];
+      const perEntry = sampledPers[perIdx++];
+      const locSub = { type: 'location', value: locEntry.value, line: locEntry.line };
+      const perSub = { type: 'person', value: perEntry.value, line: perEntry.line, variant: personVariant(activity) };
+      const locFirst = Math.random() < 0.5;
+      return { ...base, s1: locFirst ? locSub : perSub, s2: locFirst ? perSub : locSub };
+    }
     if (locSet.has(idx)) {
       const e = sampledLocs[locIdx++];
       const { s1, s2 } = modPair({ type: 'location', value: e.value, line: e.line });
