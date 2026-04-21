@@ -648,14 +648,34 @@ footer {
 
 footer .disclaimer {
   font-style: italic;
-  opacity: 0;
-  transition: opacity 0.3s ease;
   min-height: 1.2em;
+  overflow: hidden;
 }
 
-footer .disclaimer.billboard-visible {
-  opacity: 1;
+@keyframes billboard-in-top {
+  from { opacity: 0; transform: translateY(-120%); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes billboard-in-bottom {
+  from { opacity: 0; transform: translateY(120%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes billboard-out-top {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-120%); }
+}
+
+@keyframes billboard-out-bottom {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(120%); }
+}
+
+footer .disclaimer.bb-out-top    { animation: billboard-out-top    0.3s ease forwards; }
+footer .disclaimer.bb-out-bottom { animation: billboard-out-bottom  0.3s ease forwards; }
+footer .disclaimer.bb-in-top     { animation: billboard-in-top      0.3s ease forwards; }
+footer .disclaimer.bb-in-bottom  { animation: billboard-in-bottom   0.3s ease forwards; }
 
 footer .version {
   opacity: 0.6;

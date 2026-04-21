@@ -1,4 +1,4 @@
 This site is intended for practice — during a match, engage the audience!
 NEW: Location and Person mods.
-Flag button now has an optional comment textbox.
+NEW: Flag button now has an optional comment textbox.
 NEW: This wheel!

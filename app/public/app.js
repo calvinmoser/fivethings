@@ -393,13 +393,32 @@ async function startBillboard() {
   if (!lines.length) return;
 
   let idx = 0;
+  let fromBottom = true;
+
+  function clearBBClasses() {
+    billboardEl.classList.remove('bb-out-top', 'bb-out-bottom', 'bb-in-top', 'bb-in-bottom');
+  }
+
   function show() {
-    billboardEl.classList.remove('billboard-visible');
-    setTimeout(() => {
+    const outClass = fromBottom ? 'bb-out-top' : 'bb-out-bottom';
+    const inClass  = fromBottom ? 'bb-in-bottom' : 'bb-in-top';
+
+    clearBBClasses();
+    if (billboardEl.textContent) {
+      billboardEl.classList.add(outClass);
+      setTimeout(() => {
+        clearBBClasses();
+        billboardEl.textContent = lines[idx];
+        billboardEl.classList.add(inClass);
+        idx = (idx + 1) % lines.length;
+        fromBottom = !fromBottom;
+      }, 300);
+    } else {
       billboardEl.textContent = lines[idx];
-      billboardEl.classList.add('billboard-visible');
+      billboardEl.classList.add(inClass);
       idx = (idx + 1) % lines.length;
-    }, 300);
+      fromBottom = !fromBottom;
+    }
   }
 
   show();
