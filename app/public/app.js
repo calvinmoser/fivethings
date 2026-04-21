@@ -392,32 +392,59 @@ async function startBillboard() {
   } catch (_) {}
   if (!lines.length) return;
 
+  const ANIM_MS = 300;
   let idx = 0;
-  let fromBottom = true;
 
   function clearBBClasses() {
-    billboardEl.classList.remove('bb-out-top', 'bb-out-bottom', 'bb-in-top', 'bb-in-bottom');
+    billboardEl.classList.remove('bb-out-top', 'bb-out-bottom', 'bb-out-bottom-slow', 'bb-in-bottom', 'bb-in-top');
+  }
+
+  function slide(text, outClass, inClass, onDone) {
+    clearBBClasses();
+    billboardEl.classList.add(outClass);
+    setTimeout(() => {
+      clearBBClasses();
+      billboardEl.textContent = text;
+      billboardEl.classList.add(inClass);
+      if (onDone) setTimeout(onDone, ANIM_MS);
+    }, ANIM_MS);
+  }
+
+  function shuffleDown(shuffleLines, onDone) {
+    const SHUFFLE_MS = ANIM_MS * 2;
+    let i = 0;
+    function next() {
+      clearBBClasses();
+      billboardEl.classList.add('bb-out-bottom-slow');
+      setTimeout(() => {
+        clearBBClasses();
+        if (i < shuffleLines.length) {
+          billboardEl.textContent = shuffleLines[i++];
+          requestAnimationFrame(() => requestAnimationFrame(next));
+        } else if (onDone) {
+          onDone();
+        }
+      }, SHUFFLE_MS);
+    }
+    next();
   }
 
   function show() {
-    const outClass = fromBottom ? 'bb-out-top' : 'bb-out-bottom';
-    const inClass  = fromBottom ? 'bb-in-bottom' : 'bb-in-top';
+    const nextIdx = idx;
+    idx = (idx + 1) % lines.length;
 
-    clearBBClasses();
-    if (billboardEl.textContent) {
-      billboardEl.classList.add(outClass);
-      setTimeout(() => {
-        clearBBClasses();
-        billboardEl.textContent = lines[idx];
-        billboardEl.classList.add(inClass);
-        idx = (idx + 1) % lines.length;
-        fromBottom = !fromBottom;
-      }, 300);
+    if (nextIdx === 0 && billboardEl.textContent && lines.length > 1) {
+      // Slide down backward through lines[N-1..1], then land on lines[0]
+      const rev = lines.slice(1, -1).reverse();
+      shuffleDown(rev, () => {
+        billboardEl.textContent = lines[0];
+        billboardEl.classList.add('bb-in-top');
+      });
+    } else if (!billboardEl.textContent) {
+      billboardEl.textContent = lines[nextIdx];
+      billboardEl.classList.add('bb-in-bottom');
     } else {
-      billboardEl.textContent = lines[idx];
-      billboardEl.classList.add(inClass);
-      idx = (idx + 1) % lines.length;
-      fromBottom = !fromBottom;
+      slide(lines[nextIdx], 'bb-out-top', 'bb-in-bottom');
     }
   }
 

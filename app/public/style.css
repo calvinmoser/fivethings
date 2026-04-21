@@ -672,10 +672,11 @@ footer .disclaimer {
   to   { opacity: 0; transform: translateY(120%); }
 }
 
-footer .disclaimer.bb-out-top    { animation: billboard-out-top    0.3s ease forwards; }
-footer .disclaimer.bb-out-bottom { animation: billboard-out-bottom  0.3s ease forwards; }
-footer .disclaimer.bb-in-top     { animation: billboard-in-top      0.3s ease forwards; }
-footer .disclaimer.bb-in-bottom  { animation: billboard-in-bottom   0.3s ease forwards; }
+footer .disclaimer.bb-out-top      { animation: billboard-out-top    0.3s ease forwards; }
+footer .disclaimer.bb-out-bottom   { animation: billboard-out-bottom 0.3s ease forwards; }
+footer .disclaimer.bb-out-bottom-slow { animation: billboard-out-bottom 0.6s ease forwards; }
+footer .disclaimer.bb-in-bottom    { animation: billboard-in-bottom  0.3s ease forwards; }
+footer .disclaimer.bb-in-top       { animation: billboard-in-top     0.3s ease forwards; }
 
 footer .version {
   opacity: 0.6;
