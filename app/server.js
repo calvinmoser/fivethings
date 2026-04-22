@@ -41,7 +41,7 @@ app.get('/api/activities/:difficulty', (req, res, next) => {
   const logPath = path.join(LOG_DIR, 'access.log');
   const timestamp = new Date().toLocaleString([], TIME_FORMAT);
   const ip = req.headers['x-forwarded-for'] + ' ' + req.socket.remoteAddress;
-  const message = `${timestamp} - ${req.method} ${req.url} - IP: ${ip}`;
+  const message = `[${timestamp}] ${req.method} ${req.url} - IP: ${ip}`;
     console.log(message);
     fs.appendFile(logPath, message + '\n', (err) => {
       if (err) console.log("Error writing to " + logPath);
@@ -53,7 +53,7 @@ app.get('/api/activities/:difficulty', (req, res, next) => {
 function logHeaders(headers) {
   const logPath = path.join(LOG_DIR, 'debug.log');
   const timestamp = new Date().toLocaleString([], TIME_FORMAT);
-  const message = `${timestamp} ${JSON.stringify(headers, null, 2)}`;
+  const message = `[${timestamp}] ${JSON.stringify(headers, null, 2)}`;
   fs.appendFile(logPath, message + '\n', (err) => {
     if (err) console.log("Error writing to " + logPath);
   });
@@ -362,7 +362,7 @@ app.post('/api/flag', (req, res) => {
   if (!type || !difficulty || !activityLine || !activityName) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
-  const ts = new Date().toISOString();
+  const ts = new Date().toLocaleString([], TIME_FORMAT);
   const commentSuffix = comment ? ` comment="${comment.replace(/"/g, '\\"')}"` : '';
   let logLine;
   if (type === 'name') {

@@ -8,7 +8,7 @@ function escapeHtml(s) {
 }
 
 function parseLineDate(line) {
-  const m = line.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  const m = line.match(/^\[(\d{1,2})\/(\d{1,2})\/(\d{4})/);
   if (!m) return null;
   return new Date(+m[3], +m[1] - 1, +m[2]);
 }
