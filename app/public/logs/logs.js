@@ -124,7 +124,8 @@ async function loadLog(name, containerId, countId) {
     const res = await fetch(`/api/logs/${name}`);
     const { lines } = await res.json();
     if (name === 'access') {
-      renderAccessLog(lines, container, counter);
+      const filtered = showDevCheckbox.checked ? lines : lines.filter(l => !l.includes(DEV_IP));
+      renderAccessLog(filtered, container, counter);
     } else {
       const box = document.getElementById('flaggedBox');
       if (!lines.length) {
@@ -145,10 +146,14 @@ async function loadLog(name, containerId, countId) {
   }
 }
 
+const DEV_IP = '10.5.5.15';
+const showDevCheckbox = document.getElementById('showDevCheckbox');
+
 function loadAll() {
   loadLog('access',  'accessLog',  'accessCount');
   loadLog('flagged', 'flaggedLog', 'flaggedCount');
 }
 
 document.getElementById('refreshBtn').addEventListener('click', loadAll);
+showDevCheckbox.addEventListener('change', loadAll);
 loadAll();

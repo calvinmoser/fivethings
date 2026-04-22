@@ -149,6 +149,16 @@
       font-style: italic;
     }
 
+    .filter-label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
     .btn-back {
       font-size: 0.85rem;
       color: var(--accent);
@@ -183,6 +193,10 @@
     <div class="logs-header">
       <h1>Logs</h1>
       <div class="logs-header-actions">
+        <label class="filter-label">
+          <input type="checkbox" id="showDevCheckbox" />
+          Show dev machine
+        </label>
         <button class="btn-refresh" id="refreshBtn">Refresh</button>
         <a class="btn-back" href="/">← Back</a>
       </div>
