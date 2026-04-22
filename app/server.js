@@ -398,6 +398,21 @@ app.get('/api/billboard', (req, res) => {
   }
 });
 
+app.get('/api/logs/:name', (req, res) => {
+  const files = {
+    access:  path.join(LOG_DIR, 'access.log'),
+    flagged: path.join(DATA_DIR, 'flagged.log')
+  };
+  const filePath = files[req.params.name];
+  if (!filePath) return res.status(404).json({ error: 'Unknown log' });
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    res.json({ lines: content.split('\n').filter(l => l.trim()) });
+  } catch (_) {
+    res.json({ lines: [] });
+  }
+});
+
 app.get('/health', (req, res) => res.json({ ok: true }));
 
 app.get('/api/version', (req, res) => {
