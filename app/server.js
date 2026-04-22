@@ -379,7 +379,7 @@ app.post('/api/flag', (req, res) => {
   } else {
     return res.status(400).json({ error: 'Invalid flag type' });
   }
-  const logPath = path.join(DATA_DIR, 'flagged.log');
+  const logPath = path.join(LOG_DIR, 'flagged.log');
   try {
     fs.appendFileSync(logPath, logLine, 'utf8');
     res.json({ ok: true });
@@ -401,7 +401,7 @@ app.get('/api/billboard', (req, res) => {
 app.get('/api/logs/:name', (req, res) => {
   const files = {
     access:  path.join(LOG_DIR, 'access.log'),
-    flagged: path.join(DATA_DIR, 'flagged.log')
+    flagged: path.join(LOG_DIR, 'flagged.log')
   };
   const filePath = files[req.params.name];
   if (!filePath) return res.status(404).json({ error: 'Unknown log' });
