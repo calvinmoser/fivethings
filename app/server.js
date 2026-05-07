@@ -37,6 +37,36 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/robots.txt', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.type('text/plain').send(
+    'User-agent: *\nDisallow: /api/\nDisallow: /logs/\n\n' +
+    `Sitemap: ${host}/sitemap.xml\n`
+  );
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.type('application/xml').send(
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    '  <url>\n' +
+    `    <loc>${host}/</loc>\n` +
+    '    <changefreq>monthly</changefreq>\n' +
+    '    <priority>1.0</priority>\n' +
+    '  </url>\n' +
+    '</urlset>\n'
+  );
+});
+
+const BOT_UA_RE = /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebot|ia_archiver|msnbot|ahrefsbot|semrushbot|dotbot|rogerbot|petalbot/i;
+
+app.use('/api', (req, res, next) => {
+  const ua = req.headers['user-agent'] || '';
+  if (BOT_UA_RE.test(ua)) return res.status(403).json({ error: 'Forbidden' });
+  next();
+});
+
 app.get('/api/activities/:difficulty', (req, res, next) => {
   const logPath = path.join(LOG_DIR, 'access.log');
   const timestamp = new Date().toLocaleString([], TIME_FORMAT);
