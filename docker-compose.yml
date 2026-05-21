@@ -11,10 +11,9 @@ services:
     build: .
     image: "${IMAGE_NAME}:${IMAGE_VERSION}"
     ports:
-      - "55560:80"
+      - "80:3000"
     volumes:
       - ./data:/data
     environment:
-      - PORT=80
       - DATA_DIR=/data
     restart: unless-stopped
