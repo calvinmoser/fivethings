@@ -704,3 +704,60 @@ footer .version {
     display: inline;
   }
 }
+
+/* ---- Print (black & white) ---- */
+@media print {
+  html { min-width: 0; }
+
+  body,
+  body[class] {
+    background: #fff;
+    color: #000;
+  }
+
+  .curtain-container,
+  .theme-picker,
+  .controls,
+  .btn-refresh,
+  .btn-flag-row,
+  .modal,
+  footer .disclaimer,
+  footer .copyright,
+  footer .version {
+    display: none !important;
+  }
+
+  .page-wrapper {
+    max-width: none;
+    padding: 0;
+    gap: 1rem;
+  }
+
+  header h1,
+  body[class] header h1,
+  .activity-name,
+  body[class] .activity-name {
+    color: #000;
+    background: none;
+    text-shadow: none;
+    -webkit-text-fill-color: #000;
+  }
+
+  .activity-card {
+    background: #fff;
+    border: none;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .sub-text,
+  .sub-text .item-name,
+  .state-message,
+  footer,
+  footer a {
+    color: #000;
+  }
+
+  .sub-text { padding-left: 0; }
+  footer { border-top: none; }
+}
