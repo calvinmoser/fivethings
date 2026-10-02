@@ -705,14 +705,46 @@ footer .version {
   }
 }
 
-/* ---- Print (black & white) ---- */
+/* ---- Print (selected theme colors) ---- */
 @media print {
   html { min-width: 0; }
+
+  /* Light palettes for themes that only define dark colors */
+  body.theme-spotlight {
+    --text:         #1a1405;
+    --text-muted:   #6a5520;
+    --accent:       #a06800;
+    --accent-hover: #c08000;
+  }
+  body.theme-greasepaint {
+    --text:         #2a1808;
+    --text-muted:   #6a4a28;
+    --accent:       #aa2222;
+    --accent-hover: #cc3333;
+  }
+  body.theme-neon {
+    --text:         #0a0a30;
+    --text-muted:   #40407a;
+    --accent:       #0088aa;
+    --accent-hover: #00a0c8;
+  }
+  body.theme-sockbuskin {
+    --text:         #0a2028;
+    --text-muted:   #406068;
+    --accent:       #108060;
+    --accent-hover: #20a080;
+  }
 
   body,
   body[class] {
     background: #fff;
-    color: #000;
+  }
+
+  header h1,
+  .activity-name {
+    text-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .curtain-container,
@@ -733,29 +765,11 @@ footer .version {
     gap: 1rem;
   }
 
-  header h1,
-  body[class] header h1,
-  .activity-name,
-  body[class] .activity-name {
-    color: #000;
-    background: none;
-    text-shadow: none;
-    -webkit-text-fill-color: #000;
-  }
-
   .activity-card {
-    background: #fff;
+    background: none;
     border: none;
     box-shadow: none;
     break-inside: avoid;
-  }
-
-  .sub-text,
-  .sub-text .item-name,
-  .state-message,
-  footer,
-  footer a {
-    color: #000;
   }
 
   .sub-text { padding-left: 0; }
