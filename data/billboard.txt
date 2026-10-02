@@ -1,2 +1,3 @@
 This site is intended for practice — during a match, engage the audience!
 NEW: Print-friendly view — print the page for a clean list of suggestions in your selected theme.
+NEW: Every theme now has a light mode — it follows your device's light/dark setting.

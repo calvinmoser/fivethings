@@ -100,6 +100,23 @@ body.theme-spotlight {
   --cs4: #880020; --cs5: #500010; --cs6: #1a0005;
 }
 
+@media (prefers-color-scheme: light) {
+  body.theme-spotlight {
+    --bg:           #fffaf0;
+    --bg-surface:   #f5ecd8;
+    --bg-elevated:  #ebdcc0;
+    --text:         #1a1405;
+    --text-muted:   #6a5520;
+    --accent:       #a06800;
+    --accent-hover: #c08000;
+    --accent-dim:   #e0b860;
+    --border:       #d8c890;
+    --flag-color:   #c0442a;
+    --flag-hover:   #e0552a;
+    --flag-bg:      rgba(192, 68, 42, 0.1);
+  }
+}
+
 /* ---- Greasepaint — vaudeville warm sepia ---- */
 body.theme-greasepaint {
   --bg:           #1a1008;
@@ -119,6 +136,23 @@ body.theme-greasepaint {
   /* Curtain: warm burgundy/amber velvet */
   --cs1: #3a1500; --cs2: #702000; --cs3: #b04000;
   --cs4: #702000; --cs5: #3a1500; --cs6: #140800;
+}
+
+@media (prefers-color-scheme: light) {
+  body.theme-greasepaint {
+    --bg:           #fbf3e4;
+    --bg-surface:   #f0e2c8;
+    --bg-elevated:  #e4d0ac;
+    --text:         #2a1808;
+    --text-muted:   #6a4a28;
+    --accent:       #aa2222;
+    --accent-hover: #cc3333;
+    --accent-dim:   #e09090;
+    --border:       #c8a880;
+    --flag-color:   #b07010;
+    --flag-hover:   #d08820;
+    --flag-bg:      rgba(176, 112, 16, 0.1);
+  }
 }
 
 /* ---- Neon Stage — electric cyan & magenta ---- */
@@ -142,6 +176,24 @@ body.theme-neon {
   --cs4: #001090; --cs5: #000060; --cs6: #000020;
 }
 
+@media (prefers-color-scheme: light) {
+  body.theme-neon {
+    --bg:           #f4f6ff;
+    --bg-surface:   #e6eaff;
+    --bg-elevated:  #d6dcf8;
+    --text:         #0a0a30;
+    --text-muted:   #40407a;
+    --accent:       #0088aa;
+    --accent-hover: #00a0c8;
+    --accent-dim:   #80d8f0;
+    --border:       #b0b0e0;
+    --flag-color:   #c00080;
+    --flag-hover:   #e000a0;
+    --flag-bg:      rgba(192, 0, 128, 0.1);
+    --rainbow: linear-gradient(90deg, #0088aa 0%, #c000c0 50%, #0088aa 100%);
+  }
+}
+
 /* ---- Sock & Buskin — comedy/tragedy teal & gold ---- */
 body.theme-sockbuskin {
   --bg:           #0a1520;
@@ -161,6 +213,23 @@ body.theme-sockbuskin {
   /* Curtain: deep teal-navy */
   --cs1: #001830; --cs2: #003050; --cs3: #005070;
   --cs4: #003050; --cs5: #001830; --cs6: #000810;
+}
+
+@media (prefers-color-scheme: light) {
+  body.theme-sockbuskin {
+    --bg:           #eef8f5;
+    --bg-surface:   #ddefea;
+    --bg-elevated:  #c8e4dc;
+    --text:         #0a2028;
+    --text-muted:   #406068;
+    --accent:       #108060;
+    --accent-hover: #20a080;
+    --accent-dim:   #80d0b8;
+    --border:       #a0c8c0;
+    --flag-color:   #b07810;
+    --flag-hover:   #d09020;
+    --flag-bg:      rgba(176, 120, 16, 0.1);
+  }
 }
 
 /* ---- Reset & Base ---- */
@@ -708,32 +777,6 @@ footer .version {
 /* ---- Print (selected theme colors) ---- */
 @media print {
   html { min-width: 0; }
-
-  /* Light palettes for themes that only define dark colors */
-  body.theme-spotlight {
-    --text:         #1a1405;
-    --text-muted:   #6a5520;
-    --accent:       #a06800;
-    --accent-hover: #c08000;
-  }
-  body.theme-greasepaint {
-    --text:         #2a1808;
-    --text-muted:   #6a4a28;
-    --accent:       #aa2222;
-    --accent-hover: #cc3333;
-  }
-  body.theme-neon {
-    --text:         #0a0a30;
-    --text-muted:   #40407a;
-    --accent:       #0088aa;
-    --accent-hover: #00a0c8;
-  }
-  body.theme-sockbuskin {
-    --text:         #0a2028;
-    --text-muted:   #406068;
-    --accent:       #108060;
-    --accent-hover: #20a080;
-  }
 
   body,
   body[class] {
