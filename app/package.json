@@ -1,6 +1,6 @@
 {
   "name": "fivethings",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Improv suggestion tool",
   "main": "server.js",
   "scripts": {
